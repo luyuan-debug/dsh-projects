@@ -1,0 +1,9 @@
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.doc binary
+*.docx binary
+*.xlsx binary
+*.pptx binary
+src/product/readers/document-macos-arm64 binary

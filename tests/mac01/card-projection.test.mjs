@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { isHumanUserEvent, LINK_RECORD, threadCardDefinition as d } from '../../src/product/protocol/thread-card.mjs';
+const user=(id,seq)=>({type:'user/message',seq,data:{id,source:{kind:'user'}}});
+const record=(messageId,messageSeq,threadId,version=1,status='created')=>({type:LINK_RECORD,ignorable:true,data:{association:{messageId,messageSeq,threadId,threadSessionId:'session-'+threadId,version,status,title:threadId,createdAt:1}}});
+function start(id,seq){const event=user(id,seq);return {key:'key-'+id,id,start:{event,location:{kind:'turn',turn:{turn:seq}}},state:d.start(null,{event})};}
+test('a user message alone never creates a success card',()=>{assert.equal(d.buildViewNode(start('arbitrary-message',3)),null);assert.equal(d.match(user('arbitrary-message',3)).id,'arbitrary-message');});
+test('runtime-injected user-role context is never a user-message anchor',()=>{const context={...user('internal',4),data:{id:'internal',source:{kind:'runtime'}}};assert.equal(isHumanUserEvent(context),false);assert.equal(d.match(context),null);});
+test('multiple Threads anchor outside the process disclosure at the ORIGINAL user event and deduplicate replay',()=>{const c=start('m',3);for(const event of [record('m',3,'a'),record('m',3,'b'),record('m',3,'a'),record('m',3,'a',2,'completed')])c.state=d.update(c,{event});const node=d.buildViewNode(c);assert.equal(node.anchorSeq,3.01);assert.equal(node.location,c.start.location);assert.equal(node.groupTree,'input');assert.equal(Object.keys(node.data.links).length,2);assert.equal(node.data.links.a.status,'completed');});
+test('an association cannot cross a message Context or its sequence',()=>{const c=start('m',3);for(const event of [record('other',3,'a'),record('m',8,'b')])c.state=d.update(c,{event});assert.equal(d.buildViewNode(c),null);});
+test('serialized user and update records reconstruct the same node after a fresh Client',()=>{function replay(events){const c=start('m',3);for(const event of events)c.state=d.update(c,{event});return d.buildViewNode(c);}const events=[record('m',3,'a'),record('m',3,'a',2,'waiting')];assert.deepEqual(replay(JSON.parse(JSON.stringify(events))),replay(events));});

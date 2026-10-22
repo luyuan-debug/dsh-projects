@@ -1,0 +1,1059 @@
+[
+  {
+    "path": "tests/mac04r1/knowledge.test.mjs",
+    "type": "user-absolute-path",
+    "line": 25,
+    "sha256": "11c699bca17e7ee0c705bd8e8f6fee0eff900c8d9bc8db51799ea0a935e48030",
+    "reason": "Reviewed synthetic invalid logical filename; no real account or file access"
+  },
+  {
+    "path": "tests/wave1-lifecycle/owner-runtime.test.mjs",
+    "type": "user-absolute-path",
+    "line": 24,
+    "sha256": "2e5817535cb8d166b4f3edaba44e0e8497ff8168d0e36b353282511ade2c2ae7",
+    "reason": "Reviewed synthetic Agent spec; no real user workspace"
+  },
+  {
+    "path": "tests/fixtures/wave1/legacy-location-policy.mjs",
+    "type": "user-absolute-path",
+    "line": 4,
+    "sha256": "f6e137ca28e8a310b57edfcdb59689323f5346583069e3739beabf60343353c1",
+    "reason": "Reviewed legacy rejected prefix retained solely as a regression witness"
+  },
+  {
+    "path": "node_modules/zod/package.json",
+    "type": "email",
+    "line": 6,
+    "sha256": "c630bd10b52dcf71c112a2bf78dbf2734b9db58d62de663b8d86c2ec2c8cda2e",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/core/tests/extend.test.ts",
+    "type": "email",
+    "line": 17,
+    "sha256": "4054a484af74303035b47f26f1c8d66cca6fae3454c0f9fb720b298c512aca68",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/from-json-schema.test.ts",
+    "type": "email",
+    "line": 448,
+    "sha256": "21c067addb40013dd9426319cf1efdb48cca6731867c9220d77c516eac0b5a25",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/mini/tests/object.test.ts",
+    "type": "email",
+    "line": 133,
+    "sha256": "27e93d0daec2650bd1fde5cc47d77d2ee718a237e90ae6455b532d084039db3f",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/mini/tests/object.test.ts",
+    "type": "email",
+    "line": 145,
+    "sha256": "27e93d0daec2650bd1fde5cc47d77d2ee718a237e90ae6455b532d084039db3f",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/record.test.ts",
+    "type": "email",
+    "line": 498,
+    "sha256": "e9434dc71b9371f05b60cc4483c6ee0bf52006c6a950492cb844a997777b64ab",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/record.test.ts",
+    "type": "email",
+    "line": 504,
+    "sha256": "e9434dc71b9371f05b60cc4483c6ee0bf52006c6a950492cb844a997777b64ab",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/record.test.ts",
+    "type": "email",
+    "line": 519,
+    "sha256": "e9434dc71b9371f05b60cc4483c6ee0bf52006c6a950492cb844a997777b64ab",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/refine.test.ts",
+    "type": "credential-assignment",
+    "line": 40,
+    "sha256": "2f3a329952b6f0109028a142225d719b05307a18f7395297711f725b599933f8",
+    "reason": "Reviewed password-equality schema test literals in the unmodified public Zod 4.4.3 tarball; lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/refine.test.ts",
+    "type": "credential-assignment",
+    "line": 41,
+    "sha256": "2f3a329952b6f0109028a142225d719b05307a18f7395297711f725b599933f8",
+    "reason": "Reviewed password-equality schema test literals in the unmodified public Zod 4.4.3 tarball; lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/refine.test.ts",
+    "type": "credential-assignment",
+    "line": 74,
+    "sha256": "2f3a329952b6f0109028a142225d719b05307a18f7395297711f725b599933f8",
+    "reason": "Reviewed password-equality schema test literals in the unmodified public Zod 4.4.3 tarball; lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/refine.test.ts",
+    "type": "credential-assignment",
+    "line": 75,
+    "sha256": "2f3a329952b6f0109028a142225d719b05307a18f7395297711f725b599933f8",
+    "reason": "Reviewed password-equality schema test literals in the unmodified public Zod 4.4.3 tarball; lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/refine.test.ts",
+    "type": "email",
+    "line": 39,
+    "sha256": "2f3a329952b6f0109028a142225d719b05307a18f7395297711f725b599933f8",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/refine.test.ts",
+    "type": "email",
+    "line": 73,
+    "sha256": "2f3a329952b6f0109028a142225d719b05307a18f7395297711f725b599933f8",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/refine.test.ts",
+    "type": "credential-assignment",
+    "line": 66,
+    "sha256": "6e420a6712788d94661194763d926f00e8031ba236f8904eee18d32e80eb1745",
+    "reason": "Reviewed password-equality schema test literals in the unmodified public Zod 4.4.3 tarball; lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/refine.test.ts",
+    "type": "credential-assignment",
+    "line": 67,
+    "sha256": "6e420a6712788d94661194763d926f00e8031ba236f8904eee18d32e80eb1745",
+    "reason": "Reviewed password-equality schema test literals in the unmodified public Zod 4.4.3 tarball; lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/refine.test.ts",
+    "type": "credential-assignment",
+    "line": 93,
+    "sha256": "6e420a6712788d94661194763d926f00e8031ba236f8904eee18d32e80eb1745",
+    "reason": "Reviewed password-equality schema test literals in the unmodified public Zod 4.4.3 tarball; lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/refine.test.ts",
+    "type": "credential-assignment",
+    "line": 94,
+    "sha256": "6e420a6712788d94661194763d926f00e8031ba236f8904eee18d32e80eb1745",
+    "reason": "Reviewed password-equality schema test literals in the unmodified public Zod 4.4.3 tarball; lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/refine.test.ts",
+    "type": "credential-assignment",
+    "line": 103,
+    "sha256": "6e420a6712788d94661194763d926f00e8031ba236f8904eee18d32e80eb1745",
+    "reason": "Reviewed password-equality schema test literals in the unmodified public Zod 4.4.3 tarball; lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/refine.test.ts",
+    "type": "credential-assignment",
+    "line": 104,
+    "sha256": "6e420a6712788d94661194763d926f00e8031ba236f8904eee18d32e80eb1745",
+    "reason": "Reviewed password-equality schema test literals in the unmodified public Zod 4.4.3 tarball; lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/refine.test.ts",
+    "type": "email",
+    "line": 65,
+    "sha256": "6e420a6712788d94661194763d926f00e8031ba236f8904eee18d32e80eb1745",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/refine.test.ts",
+    "type": "email",
+    "line": 92,
+    "sha256": "6e420a6712788d94661194763d926f00e8031ba236f8904eee18d32e80eb1745",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/refine.test.ts",
+    "type": "email",
+    "line": 102,
+    "sha256": "6e420a6712788d94661194763d926f00e8031ba236f8904eee18d32e80eb1745",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string-formats.test.ts",
+    "type": "email",
+    "line": 13,
+    "sha256": "d6b61815603bbfc8a7acaeac23d88773195c45991c7b85dffc85e23f24b37640",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string-formats.test.ts",
+    "type": "email",
+    "line": 14,
+    "sha256": "d6b61815603bbfc8a7acaeac23d88773195c45991c7b85dffc85e23f24b37640",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string-formats.test.ts",
+    "type": "email",
+    "line": 17,
+    "sha256": "d6b61815603bbfc8a7acaeac23d88773195c45991c7b85dffc85e23f24b37640",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string-formats.test.ts",
+    "type": "email",
+    "line": 18,
+    "sha256": "d6b61815603bbfc8a7acaeac23d88773195c45991c7b85dffc85e23f24b37640",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string-formats.test.ts",
+    "type": "email",
+    "line": 21,
+    "sha256": "d6b61815603bbfc8a7acaeac23d88773195c45991c7b85dffc85e23f24b37640",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string-formats.test.ts",
+    "type": "email",
+    "line": 22,
+    "sha256": "d6b61815603bbfc8a7acaeac23d88773195c45991c7b85dffc85e23f24b37640",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string-formats.test.ts",
+    "type": "email",
+    "line": 25,
+    "sha256": "d6b61815603bbfc8a7acaeac23d88773195c45991c7b85dffc85e23f24b37640",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string-formats.test.ts",
+    "type": "email",
+    "line": 26,
+    "sha256": "d6b61815603bbfc8a7acaeac23d88773195c45991c7b85dffc85e23f24b37640",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string-formats.test.ts",
+    "type": "email",
+    "line": 29,
+    "sha256": "d6b61815603bbfc8a7acaeac23d88773195c45991c7b85dffc85e23f24b37640",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string-formats.test.ts",
+    "type": "email",
+    "line": 30,
+    "sha256": "d6b61815603bbfc8a7acaeac23d88773195c45991c7b85dffc85e23f24b37640",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 43,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 44,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 45,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 46,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 47,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 48,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 49,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 50,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 51,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 52,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 53,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 54,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 55,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 56,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 57,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 58,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 59,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 60,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 61,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 62,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 63,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 64,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 65,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 66,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 67,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 68,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 69,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 73,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 74,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 75,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 86,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 110,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 112,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 113,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 114,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 115,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 117,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 119,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 121,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 123,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 124,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 125,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 126,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 127,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 128,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 133,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 134,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 140,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 141,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 142,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 143,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/string.test.ts",
+    "type": "email",
+    "line": 302,
+    "sha256": "19ac9a6b0a7c610038d93dd9f97d453ad3a54bd5e1b1dab99e25d544872d93cd",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 69,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 70,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 71,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 72,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 73,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 74,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 75,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 76,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 77,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 78,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 79,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 80,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 81,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 82,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 83,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 84,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 85,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 86,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 87,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 88,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 89,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 90,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 91,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 92,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 93,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 94,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 95,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 99,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 100,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 101,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 112,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 136,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 138,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 139,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 140,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 141,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 143,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 145,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 147,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 149,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 150,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 151,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 152,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 153,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 154,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 159,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 160,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 166,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 167,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 168,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 169,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 338,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 348,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 466,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/string.test.ts",
+    "type": "email",
+    "line": 1138,
+    "sha256": "a69bdc042c58e8d940e6a5f09ed93646e697af04869a65cf45e9244e950cfb06",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/mini/tests/string.test.ts",
+    "type": "email",
+    "line": 75,
+    "sha256": "efb9ef22f2179e700a2033edd4e1e03a6fe4f6b95fa4bc0bd29223065e1ec0a0",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/mini/tests/string.test.ts",
+    "type": "email",
+    "line": 144,
+    "sha256": "efb9ef22f2179e700a2033edd4e1e03a6fe4f6b95fa4bc0bd29223065e1ec0a0",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/template-literal.test.ts",
+    "type": "email",
+    "line": 361,
+    "sha256": "318f80e1f5be027d4f8a1e80b09351c2c118dbc411b3d3f2f368621209eaf62a",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/template-literal.test.ts",
+    "type": "email",
+    "line": 496,
+    "sha256": "318f80e1f5be027d4f8a1e80b09351c2c118dbc411b3d3f2f368621209eaf62a",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/union.test.ts",
+    "type": "email",
+    "line": 24,
+    "sha256": "110b65a0d6791147783c8d8f1544fc1217bc8188ea8b91de2d37cc818fe35350",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v4/classic/tests/union.test.ts",
+    "type": "email",
+    "line": 25,
+    "sha256": "110b65a0d6791147783c8d8f1544fc1217bc8188ea8b91de2d37cc818fe35350",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/unions.test.ts",
+    "type": "email",
+    "line": 25,
+    "sha256": "0c32f20d663b30438bb8ff834b7f066722160720a25a90e6513a66b9baa4604d",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "node_modules/zod/src/v3/tests/unions.test.ts",
+    "type": "email",
+    "line": 26,
+    "sha256": "0c32f20d663b30438bb8ff834b7f066722160720a25a90e6513a66b9baa4604d",
+    "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  }
+]

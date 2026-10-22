@@ -1,0 +1,84 @@
+{
+  "name": "dsh-project-threads-wave1-spike",
+  "version": "0.0.0-final01.5",
+  "private": true,
+  "type": "module",
+  "main": "src/product/host/thread-links-plugin.mjs",
+  "exports": {
+    ".": "./src/product/host/thread-links-plugin.mjs",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src/product",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "docs/INSTALL.md",
+    "docs/USAGE.md",
+    "docs/COMPATIBILITY.md",
+    "docs/KNOWN_LIMITATIONS.md",
+    "docs/MIGRATION.md",
+    "THIRD_PARTY_NOTICES.md",
+    "third_party/licenses"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-chat",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-client-ui-input-trigger",
+        "@deepseek-ai/dsh-client-ui-theme"
+      ]
+    }
+  },
+  "engines": {
+    "dsh": "0.2.1-rc.2"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/dsh-agent": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-storage-domain": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-workspace": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-llm": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-tool-fs": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-tool-bash": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-sandbox-policy": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-user-approval": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-home-paths": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-tool-fs-search": "0.2.1-rc.2"
+  },
+  "scripts": {
+    "build": "node tools/cp05/build-client.mjs",
+    "test:lifecycle": "node --test tests/wave1-lifecycle/*.test.mjs",
+    "test:mac01": "node --test tests/mac01/*.test.mjs",
+    "test:mac02": "node --test tests/mac02/*.test.mjs",
+    "test:mac03r1": "node --test tests/mac03r1/*.test.mjs",
+    "test:mac04r1": "node --test tests/mac04r1/*.test.mjs",
+    "test:mac04r2": "node --test tests/mac04r2/*.test.mjs",
+    "test": "node tools/release/test-offline.mjs",
+    "test:portable": "node tools/release/test-offline.mjs --portable",
+    "test:mac": "node tools/release/test-offline.mjs --mac"
+  },
+  "dependencies": {
+    "zod": "4.4.3"
+  },
+  "bundleDependencies": [
+    "zod"
+  ],
+  "devDependencies": {
+    "esbuild": "0.25.10",
+    "immer": "10.1.1",
+    "zustand": "4.5.7"
+  }
+}

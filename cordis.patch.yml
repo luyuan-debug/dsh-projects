@@ -1,0 +1,17 @@
+- insert:
+    - id: project-thread-associations
+      name: dsh-project-threads-wave1-spike
+      config:
+        allowedRoot: !!js process.env.DSH_PROJECT_THREADS_ROOT
+        fixturesRoot: !!js process.env.DSH_PROJECT_THREADS_FIXTURES
+        dshHome: !!js process.env.DSH_HOME
+        profile: !!js ctx.get('profileContext')?.name
+        dshBin: !!js process.env.DSH_PROJECT_THREADS_BIN
+        evidenceRoot: !!js process.env.DSH_PROJECT_THREADS_EVIDENCE
+        launchCwd: !!js process.env.DSH_PROJECT_THREADS_LAUNCH
+        sourceRoots: !!js JSON.parse(process.env.DSH_PROJECT_THREADS_SOURCE_ROOTS || '[]')
+        developmentEntry: !!js process.env.DSH_PROJECT_THREADS_DEVELOPMENT === '1'
+        agentOptions: !!js JSON.parse(process.env.DSH_PROJECT_THREADS_AGENT_OPTIONS || '{}')
+        threadTools: !!js JSON.parse(process.env.DSH_PROJECT_THREADS_TOOLS || '["read","write","edit","bash"]')
+        approvedExternalDshHome: !!js process.env.DSH_PROJECT_THREADS_EXTERNAL_DSH_HOME
+        legacyMigrationApproved: !!js process.env.DSH_PROJECT_THREADS_LEGACY_MIGRATION_APPROVED === '1'
