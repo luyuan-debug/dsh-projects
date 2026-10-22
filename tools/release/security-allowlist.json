@@ -1076,5 +1076,33 @@
     "line": 7,
     "sha256": "8efae10097504e15fd255d3d44fdead5cd8d4a1d0cbb33802cb039c2be3916fa",
     "reason": "Every occurrence is part of the user-authorized GitHub repository URL; exact file bytes and all link targets reviewed. No local username path or credentials."
+  },
+  {
+    "path": "README.md",
+    "type": "local-account",
+    "line": 11,
+    "sha256": "d90e76d7bcc6c1c47e57d96357a0955c4a23a463b7589bdfb227600d50788774",
+    "reason": "All occurrences are authorized repository URLs; every occurrence and exact file bytes reviewed, not local machine paths or credentials."
+  },
+  {
+    "path": "RELEASE_MANIFEST.json",
+    "type": "local-account",
+    "line": 7,
+    "sha256": "a6c71a6d2c97370a011d81b15c7aa4faa39f5a521a80431d1c1a3c19667adb97",
+    "reason": "All occurrences are authorized repository URLs; every occurrence and exact file bytes reviewed, not local machine paths or credentials."
+  },
+  {
+    "path": "RELEASE_NOTES.md",
+    "type": "local-account",
+    "line": 43,
+    "sha256": "cbaa14fa0439d6ba6f39fc1c959ac9950c454fe866704a84858264300b393c10",
+    "reason": "All occurrences are authorized repository URLs; every occurrence and exact file bytes reviewed, not local machine paths or credentials."
+  },
+  {
+    "path": "docs/INSTALL.md",
+    "type": "local-account",
+    "line": 7,
+    "sha256": "9a45ababd4ec62d9380fc3afa7f51c0debb4416ed006b6ed6826f1f665ea1d4c",
+    "reason": "All occurrences are authorized repository URLs; every occurrence and exact file bytes reviewed, not local machine paths or credentials."
   }
 ]

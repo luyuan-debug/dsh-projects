@@ -1,15 +1,12 @@
-# 唯一外部阻塞：GitHub 发布通道未就绪
+# 本轮开源发布步骤
 
-本机没有 gh。GitHub 连接可查询当前登录，但未返回可访问仓库，也不提供创建仓库、Release 或资产上传能力，无法确认完整写权限。没有发生 push、仓库创建或 Release 创建。
+用户已授权 MIT / Public / Prerelease / 非 Latest。本轮由 Codex 执行，不需要再次申请同一发布授权。
 
-用户只需完成一件事：准备一个已认证且具创建私有仓库/推送/Release 权限的 GitHub CLI 会话，然后让 Codex 继续。本轮未获自动安装系统软件许可，未安装 gh。
+1. 核对 MIT 及第三方声明，npm ci，build，完整 Mac 离线测试。
+2. 生成 0.1.0-rc.1 tgz，对比包成员；全新隔离安装与 0.0.0-final01.5 升级验证。
+3. 扫描当前源码、全部拟公开历史、发布资产及 Actions 日志。
+4. 推送新提交和 v0.1.0-rc.1 标签；确认两端 CI 成功，不重写旧标签。
+5. 更新同一个草稿 Release、上传新版本资产并下载核对。
+6. 检查全部通过后将仓库改为 Public，发布该草稿，保留 Prerelease，make_latest=false。
 
-最短人工操作：按 [GitHub CLI 官方安装说明](https://github.com/cli/cli#installation) 安装 gh，然后执行：
-
-```sh
-gh auth login --hostname github.com --git-protocol https --web
-```
-
-无需把 token 发给 Codex。已认证后，由 Codex重新审计候选历史/资产并执行同目录下 tools/release/publish.sh。该脚本仅创建 Private 仓库及 Draft Prerelease，不支持切换 Public。仓库已存在时先核对远端是否为空及授权，不能覆盖。
-
-本地仓库和资产的绝对路径见外层 PUBLISH_REPORT.md；本文件保持仓库可移植，不内嵌机器用户名。
+旧 tools/release/publish.sh 只用于最初创建私有仓库，不用于此已有仓库的公开发布。

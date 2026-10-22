@@ -6,16 +6,16 @@
 
 在 [Releases](https://github.com/luyuan-debug/dsh-projects/releases) 中打开当前候选，从 **Assets** 下载：
 
-- `dsh-project-threads-wave1-spike-0.0.0-final01.5.tgz`
-- `dsh-project-threads-wave1-spike-0.0.0-final01.5.tgz.sha256`
+- `dsh-project-threads-wave1-spike-0.1.0-rc.1.tgz`
+- `dsh-project-threads-wave1-spike-0.1.0-rc.1.tgz.sha256`
 
 两份文件放在同一目录，在该目录运行：
 
 ```sh
-shasum -a 256 -c dsh-project-threads-wave1-spike-0.0.0-final01.5.tgz.sha256
+shasum -a 256 -c dsh-project-threads-wave1-spike-0.1.0-rc.1.tgz.sha256
 ```
 
-确认输出 `OK` 后再安装。当前 Release 为私有草稿，需要相应仓库访问权限。
+确认输出 `OK` 后再安装。当前版本为 MIT 开源预发行候选，请阅读发布页的已知限制。
 
 ## 2. 在 DSH 中安装
 

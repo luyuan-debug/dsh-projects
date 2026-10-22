@@ -1,8 +1,10 @@
 # DSH Projects
 
-**把项目目标、共享资料和独立任务，放在同一个工作区。**
+基于 **Claude Projects** 的项目组织方式，为 **DeepSeek Harness** 实现的第三方本地项目插件。
 
-DSH Projects 是面向 **DeepSeek Harness** 的第三方插件。你可以围绕一个项目持续讨论、积累资料与记忆，并把需要独立执行的工作交给不同 Thread；每个任务都有自己的会话，也能随时进入、继续或停止。
+**当前适配：DSH 0.2.1-rc.2 · macOS arm64**
+
+你可以围绕一个项目持续讨论、积累资料与记忆，并把需要独立执行的工作交给不同 Thread；每个任务都有自己的会话，也能随时进入、继续或停止。
 
 **本地优先 · 原生会话 · 独立任务 · 共享上下文**
 
@@ -10,9 +12,25 @@ DSH Projects 是面向 **DeepSeek Harness** 的第三方插件。你可以围绕
 
 > **当前阶段：首个候选版**
 >
-> 本地核心流程已在固定 DSH 构建上验证。当前保留为私有预发行草稿，许可证尚未确定；真实模型语义与用户接受验收尚未完成。
+> 本地核心流程已在固定 DSH 构建上验证。本项目采用 MIT 许可证，以预发行候选版提供；真实模型语义与用户接受验收尚未完成。
 
-## 一个项目，持续推进
+## 参考与实现范围
+
+参考 Claude Projects，不代表完整复刻；下面是本插件目前做到的范围。
+
+| 状态 | 功能 |
+| --- | --- |
+| **已实现** | 项目目标与指令、项目主对话 / Coordinator、Overview、独立 Thread 的派工与续聊 |
+| **已实现** | 共享 Memory、Library 导入/预览/替换/下载，PDF、图片与现代 Office 的有界读取 |
+| **已实现** | 本地 Direct / Worktree、目录授权、原生会话/审批/Stop、项目暂停/归档/恢复与删除 |
+| **尚未完成** | 真实外部 MCP、自动创建 Thread 的 Routine、插件内 PR/CI 协作、多可写仓库高级流程 |
+| **当前不支持** | 云 Worker、OCR、旧 Office、宏执行、公式计算、通用 Office 保真排版 |
+
+真实模型语义、图像理解和用户接受验收尚未完成。这是独立的第三方实现，提及 Claude Projects 表示产品参考，不代表官方关联或背书。
+
+## 核心能力
+
+**把一次对话，延续成一个可以持续推进的项目。**
 
 项目主对话用于组织工作，独立 Thread 承接具体任务，Memory 与 Library 保存可追溯的共享信息。适合围绕同一目标整理资料、开展并行任务，并在多次会话之间延续上下文。
 
@@ -48,7 +66,7 @@ Conversation、模型选择、审批和 Stop 沿用 DSH 的原生能力。资料
 | 本地任务 | Direct / Git Worktree |
 | 文档读取 | PDF、PNG/JPEG、DOCX、XLSX、PPTX，以及支持的文本资料 |
 | 项目管理 | 暂停、归档、恢复，以及确认后的删除 |
-| 分发方式 | GitHub Release 安装包；当前为 Draft Prerelease |
+| 分发方式 | GitHub Release 安装包；当前为 Prerelease |
 
 已验证宿主构建为 `332895e0f7c9d4dbfb29729f5eb367fa263ff986`。其他 DSH 构建和操作系统尚未获得产品兼容性验收；Linux CI 覆盖的是可移植离线测试。
 
@@ -79,10 +97,10 @@ npm run test:mac
 
 开发安装由 `.npmrc` 固定 `legacy-peer-deps=true`；宿主 peer 包由 DSH 提供，lockfile 保持锁定。Linux 的 13 项 Mac 专用测试显式跳过，macOS 作业继续执行它们；CI 不替代真实 Host、Desktop 或模型验收。详见 [发布维护与测试范围](docs/RELEASE.md)。
 
-当前安装版本为 `0.0.0-final01.5`。包名 `dsh-project-threads-wave1-spike` 沿用历史兼容标识，在 DSH 界面中的入口仍是 **Projects**。发布标签与安装包的对应关系以 Release 页面为准。
+当前安装版本为 `0.1.0-rc.1`。包名 `dsh-project-threads-wave1-spike` 沿用历史兼容标识，在 DSH 界面中的入口仍是 **Projects**。发布标签与安装包的对应关系以 Release 页面为准。
 
 </details>
 
 ## 许可
 
-本项目许可证尚待维护者确认，当前候选保持私有。第三方组件保留各自许可，详见 [第三方声明](THIRD_PARTY_NOTICES.md) 和 [许可证决策](LICENSE_DECISION.md)。
+本项目采用 [MIT License](LICENSE)。第三方组件保留各自版权与许可，详见 [第三方声明](THIRD_PARTY_NOTICES.md) 和 [许可记录](LICENSE_DECISION.md)。
