@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {validateProjectRequest} from '../../src/product/protocol/request-policy.mjs';
+const req=headers=>new Request('http://dsh.internal/api/project-threads',{method:'POST',headers:{host:'127.0.0.1:12345','content-type':'application/json',...headers},body:'{}'});
+test('DSH internal Fetch URL does not reject the real same-origin browser',()=>assert.doesNotThrow(()=>validateProjectRequest(req({origin:'http://127.0.0.1:12345','sec-fetch-site':'same-origin'}))));
+test('cross-project HTTP origin cannot be widened by a same-prefix hostname',()=>assert.throws(()=>validateProjectRequest(req({origin:'http://127.0.0.1:123456'})),/ORIGIN/));
+test('cross-site and opaque origin are rejected',()=>{for(const h of [{origin:'null'},{'sec-fetch-site':'cross-site'},{origin:'https://other.test'}])assert.throws(()=>validateProjectRequest(req(h)),/ORIGIN/)});
+test('simple form/text posts cannot invoke JSON controls',()=>assert.throws(()=>validateProjectRequest(req({'content-type':'text/plain'})),/JSON_CONTENT_TYPE/));
+test('authenticated in-process owner with no browser Origin can use JSON route',()=>assert.doesNotThrow(()=>validateProjectRequest(req({}))));
+test('official native app origin is accepted only on its native scheme route',()=>assert.doesNotThrow(()=>validateProjectRequest(new Request('dsh-app://app/api/project-threads',{method:'POST',headers:{origin:'dsh-app://app','content-type':'application/json'},body:'{}'}))));
+test('opaque native origin stays bound to the official native URL and JSON route',()=>{assert.doesNotThrow(()=>validateProjectRequest(new Request('dsh-app://app/api/project-threads',{method:'POST',headers:{origin:'null','content-type':'application/json'},body:'{}'})));assert.throws(()=>validateProjectRequest(req({origin:'dsh-app://app'})),/ORIGIN/);});
+test('another custom app authority cannot use the Project native route',()=>assert.throws(()=>validateProjectRequest(new Request('dsh-app://app/api/project-threads',{method:'POST',headers:{origin:'dsh-app://other','content-type':'application/json'},body:'{}'})),/ORIGIN/));

@@ -1,0 +1,54 @@
+import {KNOWLEDGE_TOOLS} from '../domain/project-knowledge.mjs';
+import {defineDomain,domainTable} from '@deepseek-ai/dsh-storage-domain';
+import {z} from 'zod';
+import {readFile,open,realpath,lstat} from 'node:fs/promises';
+import {constants} from 'node:fs';
+import {join,resolve} from 'node:path';
+import {ScopedGit} from '../backends/local/git-commit.mjs';
+import {WorkspaceBindings} from '../domain/workspace-bindings.mjs';
+import {directoryIdentity,folderMetadata,workspacePreparer,outputPath,contained} from '../backends/local/workspace-files.mjs';
+import {canonicalPath} from './environment.mjs';
+import {fail,copy,stableKey} from '../domain/projects.mjs';
+const names=['endpoints','folders','requests','grants','bindings','operations','intents'];
+const authErrors=new Set(['FOLDER_UNAVAILABLE','WORKSPACE_UNAVAILABLE','BINDING_REQUIRED','FOLDER_GRANT_REQUIRED','GRANT_SCOPE','GRANT_VERSION','FOLDER_NOT_CONNECTED','FOLDER_VERSION','ENDPOINT_OFFLINE','FOLDER_IDENTITY_CHANGED','WORKSPACE_IDENTITY_CHANGED','SESSION_BINDING_MISMATCH']);
+export async function installWorkspaces({ctx,namespace,environment,config,links,threadOwners,isManaged,additionalToolAllowed=()=>false}){
+ const domain=await ctx.storageDomain.open(defineDomain({name:namespace+'_workspaces',version:1,layout:'single',tables:Object.fromEntries(names.map(n=>[n,domainTable(z.record(z.string(),z.unknown()))]))}));
+ const tables=Object.fromEntries(names.map(n=>[n,domain.table(n)]));
+ const control=new WorkspaceBindings({tables,identity:directoryIdentity,metadata:folderMetadata,prepareWorkspace:workspacePreparer({worktreeRoot:join(environment.allowedRoot,'worktrees'),tables,revalidate:(r,g)=>control.validateGrant(tables.grants.get(g.grantId),control.request(r.requestId))}),sessionHeader:async id=>(await ctx.sessionPersistence.stat(id))?.header,endpointId:'local-'+stableKey(environment.dshHome,config.profile).slice(0,24),stop:async id=>{const a=ctx.agents.get(id);if(a){a.cancel({kind:'user'},{keepInbox:false});await a.whenIdle()}}});
+ await control.online();
+ const gitAdapter=new ScopedGit({control,tables,root:join(environment.allowedRoot,'git-operations')});
+ let activePicker=null;
+ const admissionTickets=new WeakMap();
+ const known=id=>control.bindingForSession(id)||[...tables.requests.entries()].some(([,r])=>r.threadSessionId===id)||[...links.entries()].some(([,l])=>l.threadSessionId===id);
+ const owned=a=>!!a&&(known(a.id)||a.session.header.agentPreset==='project-threads-thread');
+ const guard=ctx.tools.guard(exec=>{if(!owned(exec.agent))return;const allowed=['read','write','edit','bash','workspace_commit',...KNOWLEDGE_TOOLS];if(!allowed.includes(exec.name)&&!additionalToolAllowed(exec))return 'Tool is outside the granted local Thread capabilities';if(!isManaged(exec.agent))return 'Use the managed Project owner; an unconfigured native resume cannot execute';if(!control.admittedSync(exec.agent.id))return 'Valid Folder Grant and WorkspaceBinding required';const ticket=admissionTickets.get(exec),binding=control.bindingForSession(exec.agent.id),turn=exec.agent.session.snapshotEvents().findLast(e=>e.type==='turn/start')?.data.turn;if(!ticket||ticket.grantId!==binding?.grantId||ticket.grantVersion!==binding?.grantVersion||ticket.turn!==turn)return 'Stale tool authorization or run generation';if(exec.arguments?.sandbox_permissions==='danger-full-access')return 'Folder Grant does not authorize disabling the sandbox';});
+ const stopCreated=ctx.on('agent/created',async({agent})=>{if(owned(agent)){if(!isManaged(agent))fail('PROJECT_OWNER_REQUIRED','Resume this Thread through the managed Project owner');await control.admit(agent.id,{header:agent.session.header});}},{prepend:true});
+ const stopPrompt=ctx.on('system-prompt/assemble',async(_assembly,context,next)=>{if(owned(context.agent)){if(!isManaged(context.agent))fail('PROJECT_OWNER_REQUIRED','Use the managed Project owner');await control.admit(context.agent.id,{header:context.agent.session.header});}return next();},{prepend:true});
+ const stopTools=ctx.on('tools/pre-execute',async(exec,next)=>{
+  if(!owned(exec.agent))return next();
+  try{
+   const b=await control.admit(exec.agent.id,{header:exec.agent.session.header});admissionTickets.set(exec,{grantId:b.grantId,grantVersion:b.grantVersion,turn:exec.agent.session.snapshotEvents().findLast(e=>e.type==='turn/start')?.data.turn});
+   if(['glob','grep'].includes(exec.name)){if(exec.arguments.path!==undefined&&exec.arguments.path!=='.')fail('FOLDER_RESOURCE_SCOPE','Search is restricted to the current granted workspace; omit path');const cwd=await ctx.get('workingDirectory').ensure(exec.agent,exec.signal);if(await canonicalPath(cwd)!==b.workspacePath)fail('WORKSPACE_IDENTITY_CHANGED','Search workdir differs from the granted binding');}
+   if(['read','write','edit'].includes(exec.name)){
+    const target=await canonicalPath(resolve(b.workspacePath,exec.arguments.file_path));
+    if(!contained(b.workspacePath,target))fail('FOLDER_RESOURCE_SCOPE','This file path is outside the authorized folder');
+    const protectedPaths=[join(b.workspacePath,'.git'),b.repo?.gitDir,b.repo?.commonDir].filter(Boolean);
+    if(exec.name!=='read'&&protectedPaths.some(p=>contained(p,target)))fail('GIT_METADATA_PROTECTED','Use the scoped commit capability; shared Git metadata is not a Worker write root');
+   }
+  }catch(error){return {kind:'deny',reason:error.code+': '+error.message}}
+  const decision=await next();if(exec.name==='workspace_commit'&&decision.kind==='allow')return {kind:'ask',reason:'Commit only the explicit paths '+JSON.stringify(exec.arguments.paths)+' in this Thread binding; preserve unrelated staged and working files.'};return decision;
+ },{prepend:true});
+ const stopExecution=ctx.on('tools/execute',async(exec,next)=>{if(owned(exec.agent)){const b=await control.admit(exec.agent.id,{header:exec.agent.session.header}),ticket=admissionTickets.get(exec),turn=exec.agent.session.snapshotEvents().findLast(e=>e.type==='turn/start')?.data.turn;if(exec.signal.aborted||!isManaged(exec.agent)||!ticket||ticket.grantId!==b.grantId||ticket.grantVersion!==b.grantVersion||ticket.turn!==turn)fail('STALE_TOOL_AUTHORIZATION','Tool approval no longer covers the current grant/run');}return next();},{prepend:true});
+ await control.migrateLegacy([...links.entries()].map(([,r])=>r).filter(r=>r.phase==='active'));
+ return {control,tables,known,owned,gitAdapter,isAuthorizationError:error=>authErrors.has(error.code),
+  async mayRecover(record){try{await control.admit(record.threadSessionId);return true}catch(e){if(authErrors.has(e.code))return false;throw e}},
+  async state(projectId){return {endpoints:[...tables.endpoints.entries()].map(([,x])=>({...x,availability:control.closed?'offline':x.bootId===control.bootId?'online':'unknown'})),folders:[...tables.folders.entries()].map(([,x])=>x).filter(f=>f.connected),executionRequests:control.uiRequests(projectId),bindings:[...tables.bindings.entries()].map(([,x])=>({...x,availableForExecution:control.admittedSync(x.threadSessionId)})).filter(b=>b.projectId===projectId),grants:[...tables.grants.entries()].map(([,x])=>x).filter(g=>g.projectId===projectId),executionLocation:'local',localCapabilities:{nativePicker:ctx.get('directoryPicker')?.capability().kind==='native',terminalConnect:false,tools:['read','write','edit','bash','workspace_commit'],autoMode:'APPROVAL_MODE_PARTIAL',mcp:'NOT_MAPPED',hooks:'PARTIAL_NO_UNCONFINED_HOST_EXTENSION',localRules:'BOUND_ROOT_AGENTS_MD_AFTER_GRANT',localMemory:'PROJECT_SHARED_ON_DEMAND',gitConfinementPlatform:'macOS_TEST_REQUIRED'}};},
+  async pickFolder(){const picker=ctx.get('directoryPicker')?.capability();if(picker?.kind!=='native')fail('NATIVE_PICKER_UNAVAILABLE','This endpoint has no verified public native picker; arbitrary HTTP path registration is unavailable');if(activePicker)fail('PICKER_ALREADY_OPEN','A native folder selection is already open');const controller=new AbortController();activePicker=controller;try{const path=await picker.pick(controller.signal);if(path===null||controller.signal.aborted||control.closed)return {cancelled:true};return {folder:await control.connectSelected(path)}}catch(e){if(controller.signal.aborted)return {cancelled:true};throw e}finally{if(activePicker===controller)activePicker=null};},
+  async readOutput(projectId,input){const b=control.bindingForThread(input.threadId);if(b?.projectId!==projectId)fail('THREAD_SCOPE','Thread does not belong to this Project');await control.admit(b.threadSessionId);const path=await outputPath(b,input.path),fd=await open(path,constants.O_RDONLY|constants.O_NOFOLLOW);let bytes;try{const meta=await fd.stat({bigint:true}),physical=await realpath(path),current=await lstat(path,{bigint:true});if(!meta.isFile()||meta.ino!==current.ino||meta.dev!==current.dev||!contained(b.workspacePath,physical))fail('OUTPUT_IDENTITY','Output identity changed');if(meta.size>262144n)fail('OUTPUT_TOO_LARGE','Inspect a smaller output');const buffer=Buffer.alloc(262145);let offset=0;while(offset<buffer.length){const next=await fd.read(buffer,offset,buffer.length-offset,offset);if(!next.bytesRead)break;offset+=next.bytesRead;}if(offset>262144)fail('OUTPUT_TOO_LARGE','Inspect a smaller output');const after=await fd.stat({bigint:true});if(meta.mtimeNs!==after.mtimeNs||meta.size!==after.size)fail('OUTPUT_CHANGED','Output changed during the read');bytes=buffer.subarray(0,offset);await control.admit(b.threadSessionId);}finally{await fd.close()}return {threadId:b.threadId,bindingId:b.bindingId,path:input.path,text:bytes.toString('utf8'),trust:'untrusted-file-data'};},
+  async localRules(projectId,sessionId){const b=control.bindingForSession(sessionId);if(b?.projectId!==projectId)fail('THREAD_SCOPE','Rules need an admitted binding');try{const result=await this.readOutput(projectId,{threadId:b.threadId,path:'AGENTS.md'});if(result.text.length>65536)fail('LOCAL_RULES_TOO_LARGE','Bound repository rules exceed the verified 64KiB character limit');return result}catch(e){if(e.code==='ENOENT')return null;throw e}},
+  async recordIntent(projectId,sessionId,messageId,text,surface){const key=stableKey(sessionId,messageId),old=tables.intents.get(key),textHash=stableKey(text);if(old){if(old.projectId!==projectId||old.textHash!==textHash)fail('MESSAGE_ID_CONFLICT','The same local message id cannot name different content');return;}await tables.intents.put(key,{projectId,sessionId,messageId,textHash,executionKind:'local',actor:surface,createdAt:Date.now()});},
+  localIntent(sessionId,messageId){return tables.intents.get(stableKey(sessionId,messageId))?.executionKind==='local';},
+  freeze(){control.closed=true;activePicker?.abort(new Error('The local execution endpoint is closing'));},
+  async close(){await control.close();stopCreated();stopPrompt();stopTools();stopExecution();guard();await domain.close();}
+ };
+}

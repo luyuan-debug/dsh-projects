@@ -1,0 +1,2 @@
+/** Only intended field edits are sent; stale windows cannot overwrite unrelated legacy values. */
+export function settingsPatch(original,fields){const result=original?{projectId:original.projectId,expectedSettingsVersion:original.settingsVersion}:{};for(const [name,value]of Object.entries(fields))if(!original||JSON.stringify(value)!==JSON.stringify(original[name]))result[name]=value;return result;}

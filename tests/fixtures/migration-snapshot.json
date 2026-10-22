@@ -1,0 +1,25 @@
+{
+  "scopes": [
+    [
+      "fixture-project",
+      {
+        "projectId": "fixture-project",
+        "coordinatorSessionId": "fixture-coordinator",
+        "title": "Synthetic migration fixture",
+        "ready": true,
+        "createdAt": 1
+      }
+    ]
+  ],
+  "links": [
+    [
+      "fixture-link",
+      {
+        "projectId": "fixture-project",
+        "threadId": "fixture-thread",
+        "phase": "active",
+        "status": "completed"
+      }
+    ]
+  ]
+}

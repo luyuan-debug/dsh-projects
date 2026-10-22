@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "preparedDate": "2026-10-22",
+  "timezone": "America/New_York",
+  "repositoryName": "dsh-projects",
+  "publishState": "LOCAL_PREPARED_GITHUB_CHANNEL_UNAVAILABLE",
+  "repositoryURL": null,
+  "draftReleaseURL": null,
+  "visibility": "PRIVATE_REQUIRED_NOT_CREATED",
+  "license": "UNDECIDED_NO_PROJECT_LICENSE",
+  "tag": "final01-candidate",
+  "draft": true,
+  "prerelease": true,
+  "latest": false,
+  "packageName": "dsh-project-threads-wave1-spike",
+  "packageVersion": "0.0.0-final01.5",
+  "baselineCommit": "4b86c22dc51b0691ffebdad78d4d000777286a29",
+  "baselinePackageSHA256": "3b3a64c9d9d403ddc94318d951621d7a86e041e92203263da27587bdb6068289",
+  "packageSHA256": "04ff55627e134d3e739afe0cd78185c35dff5c01d75da30619377e2b6123bd8f",
+  "clientSHA256": "5ded6fe6a2810dd4a747759d53b4c8e546fafabac7c5562a5486e8ff3542acce",
+  "lockfileSHA256": "95aca9dbd76411325c740841ed52937f555c5b283fcb83523dc4330be0556c20",
+  "hostVersion": "0.2.1-rc.2",
+  "hostBuild": "332895e0f7c9d4dbfb29729f5eb367fa263ff986",
+  "hostFileHashesMatchBaseline": true,
+  "platform": "macOS 26.5.1 (25F80) arm64",
+  "tools": {
+    "node": "26.8.1",
+    "npm": "11.19.0",
+    "hostNode": "24.21.0",
+    "hostPnpm": "11.28.5"
+  },
+  "validation": {
+    "npmCi": true,
+    "lockfileUnchanged": true,
+    "clientRebuildMatchesBaseline": true,
+    "macOffline": {
+      "pass": 196,
+      "fail": 0
+    },
+    "portableOffline": {
+      "pass": 178,
+      "fail": 0
+    },
+    "packageMembers": 776,
+    "installedMembersByteIdentical": 776,
+    "hostLifecycle": {
+      "status": "PASS",
+      "packageSHA256": "04ff55627e134d3e739afe0cd78185c35dff5c01d75da30619377e2b6123bd8f",
+      "installedMembers": 776,
+      "peerCheckExitCode": 1,
+      "runs": [
+        {
+          "stage": "warm",
+          "exitCode": 0,
+          "residualOwnedPids": [],
+          "passed": true
+        },
+        {
+          "stage": "cold",
+          "exitCode": 0,
+          "residualOwnedPids": [],
+          "passed": true
+        },
+        {
+          "stage": "disabled",
+          "exitCode": 0,
+          "residualOwnedPids": [],
+          "passed": true
+        },
+        {
+          "stage": "reenabled",
+          "exitCode": 0,
+          "residualOwnedPids": [],
+          "passed": true
+        },
+        {
+          "stage": "uninstalled",
+          "exitCode": 0,
+          "residualOwnedPids": [],
+          "passed": true
+        }
+      ],
+      "paidRequests": 0,
+      "evidence": "REAL_HOST_SCRIPTED_MODEL",
+      "desktopClaim": false
+    },
+    "securityUnresolved": 0,
+    "finalReadyForPrivateDraft": true,
+    "githubCI": "NOT_RUN",
+    "desktopThisRun": "NOT_RERUN",
+    "realModelValidated": false,
+    "paidRequests": 0,
+    "fullClaudeParity": false,
+    "userAccepted": false
+  },
+  "githubCapability": {
+    "cliInstalled": false,
+    "connectorReadQuerySucceeded": true,
+    "accessibleRepositoriesReturned": 0,
+    "connectorCreateRepositoryReleaseUpload": false,
+    "writePermissionVerified": false
+  },
+  "versionDecision": "Keep baseline version and identities; release housekeeping is not a verified version/data migration",
+  "remainingAction": "Prepare authenticated gh with private-repository, push and Release rights; then resume Codex without sending tokens"
+}

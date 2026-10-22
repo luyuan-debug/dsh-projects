@@ -1,0 +1,13 @@
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+work/
+release-artifacts/
+*.tgz
+*.bundle
+*.zip
+.env
+.env.*
+*.pem
+*.key
