@@ -5,6 +5,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--dsh-bin', required=True)
 ap.add_argument('--artifact', required=True)
 ap.add_argument('--root', required=True)
+ap.add_argument('--upgrade-from', help='Optional older package used to create data before upgrading')
 a = ap.parse_args()
 root = pathlib.Path(a.root).resolve()
 if root.exists() and not (root / '.release-owned').exists():
@@ -85,22 +86,35 @@ def stage(name):
 cli = a.dsh_bin
 command([cli, '--profile', profile, '--from-default-profile', 'web', '--dump-config'], 'bootstrap')
 store = str(root/'cache/pnpm')
-command([cli, 'plugin', '--profile', profile, 'add', 'file:'+str(artifact), '--offline', '--ignore-scripts', '--store-dir', store], 'install')
 installed = root/'dsh-home/profiles'/profile/'node_modules/dsh-project-threads-wave1-spike'
-members = []
-with tarfile.open(artifact) as tar:
-    for m in tar.getmembers():
-        if m.isfile():
-            local = installed/m.name.removeprefix('package/')
-            data = tar.extractfile(m).read()
-            assert local.is_file() and local.read_bytes() == data, 'Installed member mismatch'
-            members.append({'path': m.name.removeprefix('package/'), 'sha256': hashlib.sha256(data).hexdigest()})
+def install_package(package, label):
+    command([cli, 'plugin', '--profile', profile, 'add', 'file:'+str(package), '--offline', '--ignore-scripts', '--store-dir', store], label)
+    members = []
+    with tarfile.open(package) as tar:
+        for m in tar.getmembers():
+            if m.isfile():
+                local = installed/m.name.removeprefix('package/')
+                data = tar.extractfile(m).read()
+                assert local.is_file() and local.read_bytes() == data, 'Installed member mismatch'
+                members.append({'path': m.name.removeprefix('package/'), 'sha256': hashlib.sha256(data).hexdigest()})
+    return members
+runs = []
+baseline_version = None
+if a.upgrade_from:
+    baseline = pathlib.Path(a.upgrade_from).resolve()
+    install_package(baseline, 'install-baseline')
+    baseline_version = json.loads((installed/'package.json').read_text())['version']
+    runs.extend([stage('warm'), stage('cold')])
+members = install_package(artifact, 'upgrade' if a.upgrade_from else 'install')
+installed_version = json.loads((installed/'package.json').read_text())['version']
 (root/'installed-members.json').write_text(json.dumps(members, indent=2))
 peer_exit = command([cli, 'plugin', '--profile', profile, 'peers', 'check'], 'peers', True)
-runs = [stage('warm'), stage('cold'), stage('disabled'), stage('reenabled')]
+runs.extend([stage('upgraded')] if a.upgrade_from else [stage('warm'), stage('cold')])
+runs.extend([stage('disabled'), stage('reenabled')])
 command([cli, 'plugin', '--profile', profile, 'remove', 'dsh-project-threads-wave1-spike', '--store-dir', store], 'uninstall')
 runs.append(stage('uninstalled'))
 summary = {'status': 'PASS', 'packageSHA256': hashlib.sha256(artifact.read_bytes()).hexdigest(), 'installedMembers': len(members),
+           'installedVersion': installed_version, 'upgradeFromVersion': baseline_version,
            'peerCheckExitCode': peer_exit, 'runs': runs, 'paidRequests': 0, 'evidence': 'REAL_HOST_SCRIPTED_MODEL', 'desktopClaim': False}
 (root/'summary.json').write_text(json.dumps(summary, indent=2)+'\n')
 print(json.dumps(summary), flush=True)

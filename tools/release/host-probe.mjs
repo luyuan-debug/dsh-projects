@@ -76,7 +76,7 @@ export function apply(ctx) {
         const service = await wait(() => ctx.get('projectThreads'));
         const s = service.projects;
         assert.equal(Object.keys(process.env).filter(k => k.startsWith('DSH_PROJECT_THREADS_')).length, 0);
-        if (stage === 'cold' || stage === 'reenabled') {
+        if (stage === 'cold' || stage === 'reenabled' || stage === 'upgraded') {
           const old = JSON.parse(await readFile(join(root, 'durable.json'), 'utf8'));
           const q = await s.state(old.projectId);
           assert.equal(q.links.length, 1); assert.equal(q.links[0].threadSessionId, old.threadSessionId);

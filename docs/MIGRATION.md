@@ -1,6 +1,6 @@
 # 升级、数据身份与回退
 
-本轮保留 package name `dsh-project-threads-wave1-spike`、插件 id、Client module id、事件名和 `project_threads_*` 持久化命名空间，产品实现文件逐字节沿用 FINAL-01。版本继续 `0.0.0-final01.5`，tag 采用 `final01-candidate`，避免把发布整理当成已验证的版本升级。
+本轮保留 package name `dsh-project-threads-wave1-spike`、插件 id、Client module id、事件名和 `project_threads_*` 持久化命名空间，产品实现文件逐字节沿用 FINAL-01。公开候选版本为 `0.1.0-rc.1`，tag 为 `v0.1.0-rc.1`。版本变化仅涉及发布元数据、许可与文档；产品实现与存储格式保持不变。发布检查包含旧候选升级后的项目、Thread、Memory 与 Library 保持验证。
 
 数据根由 DSH_HOME/Profile 和标准 XDG_DATA_HOME 派生为 `dsh-project-threads/<身份哈希>`，元数据由对应 storage-domain 管理。不要仅改包名或删除显式受管路径就假定迁移完成。
 

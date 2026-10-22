@@ -1,6 +1,6 @@
 {
   "name": "dsh-project-threads-wave1-spike",
-  "version": "0.0.0-final01.5",
+  "version": "0.1.0-rc.1",
   "private": true,
   "type": "module",
   "main": "src/product/host/thread-links-plugin.mjs",
@@ -20,7 +20,8 @@
     "docs/KNOWN_LIMITATIONS.md",
     "docs/MIGRATION.md",
     "THIRD_PARTY_NOTICES.md",
-    "third_party/licenses"
+    "third_party/licenses",
+    "LICENSE"
   ],
   "dsh": {
     "bundle": {
@@ -80,5 +81,6 @@
     "esbuild": "0.25.10",
     "immer": "10.1.1",
     "zustand": "4.5.7"
-  }
+  },
+  "license": "MIT"
 }

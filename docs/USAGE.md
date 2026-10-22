@@ -1,6 +1,6 @@
 # DSH Projects 本地插件使用说明
 
-本包版本 **0.0.0-final01.5**。已验证宿主为 macOS arm64 上的 DSH 0.2.1-rc.2，构建 `332895e0f7c9d4dbfb29729f5eb367fa263ff986`。不修改或替换 DSH；完整 Claude 对标、真实模型语义验收仍未完成。
+本包版本 **0.1.0-rc.1**。已验证宿主为 macOS arm64 上的 DSH 0.2.1-rc.2，构建 `332895e0f7c9d4dbfb29729f5eb367fa263ff986`。不修改或替换 DSH；完整 Claude 对标、真实模型语义验收仍未完成。
 
 ## 安装与正常启动
 1. 从当前候选 Release 的 Assets 下载 `.tgz` 和对应校验文件，按 [安装指南](INSTALL.md) 核对 SHA-256。打开正常 DSH 的“插件”页，选择“安装第三方插件”，输入此 tgz 的完整 `file:` 路径，安装后点击“立即启用”。包名沿用 `dsh-project-threads-wave1-spike`，界面入口为 **Projects**。

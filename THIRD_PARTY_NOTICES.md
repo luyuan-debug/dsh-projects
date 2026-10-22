@@ -1,6 +1,6 @@
 # 第三方声明
 
-本轮从 FINAL-01 项目源码恢复并整理，没有移植社区 reader、MCP transport 或宿主实现。筛选树不含旧 evidence 中的官方实现摘录或私人参考图。本项目自身许可证尚未决定，见 LICENSE_DECISION.md。
+本轮从 FINAL-01 项目源码恢复并整理，没有移植社区 reader、MCP transport 或宿主实现。筛选树不含旧 evidence 中的官方实现摘录或私人参考图。本项目代码按根目录 LICENSE 中的 MIT License 发布；下列第三方组件继续适用其自身版权与 MIT 许可，不以本项目版权声明覆盖第三方权利。
 
 | 包 | 固定版本 | 许可 | 分发位置 |
 | --- | --- | --- | --- |
@@ -12,4 +12,4 @@
 
 原版权及完整许可见 third_party/licenses/*.txt；这些文本也加入 npm 安装包。esbuild 平台包与主项目同为 MIT，构建环境保留其元数据。React/react-dom 与 @deepseek-ai/* 由宿主提供并外置，不复制到安装包。Swift reader 调用系统 AppKit/PDFKit/ImageIO，Python reader 用标准库做有界静态读取。测试资料为交付包中的合成资料，不含私人 Claude 图或用户项目。
 
-Git bundle 中保留原始来源历史，本地备份不推送。静态来源审计不足以替代维护者对自有代码权属的确认。
+Git bundle 中保留原始来源历史，本地备份不推送。Claude Projects 是产品组织方式的参考，发布树不包含其私人截图或品牌素材；该参考不表示官方关联或背书。

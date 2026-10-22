@@ -181,12 +181,14 @@
     {
       "path": "cordis.patch.yml",
       "sha256": "4c74502f40d5033c1d559e9059b690305867b9fbe8886ab7e0eb4523e9e5a679"
-    },
-    {
-      "path": "package-lock.json",
-      "sha256": "95aca9dbd76411325c740841ed52937f555c5b283fcb83523dc4330be0556c20"
     }
   ],
   "changes": "Documentation, npm package files list and offline test commands, portable test runner, synthetic migration test label/data, release tooling, security allowlist and CI only",
-  "excluded": "Original history, evidence, legacy plugin implementation, runtime environments, logs, verdicts, reference screenshots and repeated phase documents"
+  "excluded": "Original history, evidence, legacy plugin implementation, runtime environments, logs, verdicts, reference screenshots and repeated phase documents",
+  "metadataOnlyChanges": [
+    "package version 0.1.0-rc.1",
+    "MIT license fields and LICENSE",
+    "package file allowlist",
+    "release and usage documentation"
+  ]
 }
