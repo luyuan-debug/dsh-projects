@@ -1,9 +1,23 @@
-# 升级、数据身份与回退
+# 升级与回退
 
-本轮保留 package name `dsh-project-threads-wave1-spike`、插件 id、Client module id、事件名和 `project_threads_*` 持久化命名空间，产品实现文件逐字节沿用 FINAL-01。公开候选版本为 `0.1.0-rc.1`，tag 为 `v0.1.0-rc.1`。版本变化仅涉及发布元数据、许可与文档；产品实现与存储格式保持不变。发布检查包含旧候选升级后的项目、Thread、Memory 与 Library 保持验证。
+安装包名为 `dsh-project-threads-wave1-spike`，界面入口为 **Projects**。包名与 `project_threads_*` 存储命名空间用于识别既有安装和数据，请勿自行改名。
 
-数据根由 DSH_HOME/Profile 和标准 XDG_DATA_HOME 派生为 `dsh-project-threads/<身份哈希>`，元数据由对应 storage-domain 管理。不要仅改包名或删除显式受管路径就假定迁移完成。
+`0.1.0-rc.1` 保留了旧候选 `0.0.0-final01.5` 的产品实现与存储格式。已验证从旧候选升级后，项目、Thread、Memory 和 Library 数据保留。
 
-升级前：暂停项目、停止任务、正常退出 DSH，一致备份数据根与同 Profile 的 project_threads_* 存储。不要复制账号配置/凭据。保留原 ID、cwd、grant、snapshot，不自动迁移绝对工作路径。回退恢复同路径/同 Profile 的一致快照。旧版不理解新工具撤销约束时，不能回退后直接执行任务。
+## 升级前
 
-后续安全重命名建议（尚未执行）：先盘点 package/bundle/module/storage/事件/迁移键及 Host 安装解析的耦合；保留旧包兼容入口和旧数据只读识别；设计显式用户确认、备份、原子提交、幂等恢复与失败回滚；用旧 Profile、Direct/Worktree、Memory/Library、Thread、停启/卸载矩阵验收后再决定版本和身份变化。不能同时加载两个 writer 访问同一命名空间。
+1. 暂停项目并停止所有任务，正常退出 DSH。
+2. 备份当前 Profile 对应的插件数据目录和 `project_threads_*` 存储，保留配套的一致快照。
+3. 保留旧安装包和校验文件，安装新版本后检查项目、会话和资料是否完整。
+
+数据目录由 `DSH_HOME`、Profile 与 `XDG_DATA_HOME` 派生，位于 `dsh-project-threads/<身份哈希>`；元数据由对应的 DSH 存储服务管理。不要将账号配置或凭据放进公开备份。
+
+## 回退
+
+停止任务并退出 DSH，再恢复旧安装包及同一路径、同一 Profile 的配套数据快照。插件不会自动迁移工作区的绝对路径；更换目录前需要确认授权和关联仍然有效。
+
+如果旧版本不支持新版本的工具撤销规则，不要在回退后直接恢复任务执行。保留新版本与备份以便排查。不要同时运行两个实例写入同一份项目存储。
+
+## 停用与卸载
+
+停用后 Projects 入口关闭，重新启用可恢复原有项目。卸载不等于删除数据；需要清理项目时，先在 Projects 内确认删除。DSH 会话历史归档保留，用户原文件、仓库和 Worktree 不删除。

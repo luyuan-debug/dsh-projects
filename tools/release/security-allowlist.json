@@ -1104,5 +1104,26 @@
     "line": 7,
     "sha256": "9a45ababd4ec62d9380fc3afa7f51c0debb4416ed006b6ed6826f1f665ea1d4c",
     "reason": "All occurrences are authorized repository URLs; every occurrence and exact file bytes reviewed, not local machine paths or credentials."
+  },
+  {
+    "path": "docs/INSTALL.md",
+    "type": "local-account",
+    "line": 9,
+    "sha256": "0a4e31f9ce72cf13108123ab8accf4f9c0229ce4248488f663560738078c7278",
+    "reason": "All occurrences are reviewed public repository URLs; no local machine paths or credentials."
+  },
+  {
+    "path": "README.md",
+    "type": "local-account",
+    "line": 9,
+    "sha256": "a05cacfbac8e5764ebb42ff3a919204271b93960acef0b361f27eee063a39ecd",
+    "reason": "All occurrences are reviewed public repository URLs; no local machine paths or credentials."
+  },
+  {
+    "path": "RELEASE_NOTES.md",
+    "type": "local-account",
+    "line": 9,
+    "sha256": "9eff9c8e672a455d4acf47437c20f8e05a7f18afa226644baff5226416b72b1c",
+    "reason": "All occurrences are reviewed public repository URLs; no local machine paths or credentials."
   }
 ]

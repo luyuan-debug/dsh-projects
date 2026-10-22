@@ -1,6 +1,8 @@
 # 安装 DSH Projects
 
-当前候选已验证环境为 **macOS arm64 / DSH 0.2.1-rc.2**，对应 Host build `332895e0f7c9d4dbfb29729f5eb367fa263ff986`。其他构建和操作系统尚未完成产品兼容性验收。
+已验证环境为 **macOS arm64 / DSH 0.2.1-rc.2**，对应 Host build `332895e0f7c9d4dbfb29729f5eb367fa263ff986`。其他构建和操作系统尚未验证。
+
+> **当前版本不支持 DSH 官方 Agent Team。** 不要在 Project 主对话或 Thread 中选择 Team 预设。同一 Profile 共装未验证；需要分别使用时，请使用独立 Profile。[兼容性说明](COMPATIBILITY.md#agent-team)
 
 ## 1. 下载并校验
 
@@ -21,7 +23,7 @@ shasum -a 256 -c dsh-project-threads-wave1-spike-0.1.0-rc.1.tgz.sha256
 
 打开 **插件 → 安装第三方插件**，输入 `.tgz` 的完整 `file:` 路径；安装后选择 **立即启用**，等待组件显示 **运行中**，再打开 **Projects**。
 
-安装包仍使用兼容标识 `dsh-project-threads-wave1-spike`。正常安装无需审计环境变量、测试模型或开发 overlay。
+安装包名为 `dsh-project-threads-wave1-spike`，界面入口为 Projects。
 
 ## 3. 创建第一个项目
 

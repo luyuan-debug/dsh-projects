@@ -1,27 +1,35 @@
 # 发布维护
 
-当前版本 0.1.0-rc.1，标签 v0.1.0-rc.1，采用 MIT。用户已授权本轮验证通过后公开仓库和发布 Prerelease，明确不设 Latest。未来每次对外发布仍应具有相应任务授权。
+## 检查流程
 
-1. 固定 Node/npm，执行 npm ci，确认 lockfile 无变化。
-2. npm run build；核对 Client 与 FINAL-01 基线哈希。
-3. npm run test:portable；Mac arm64 另运行 npm run test:mac。
-4. 保留第三方许可，npm pack --ignore-scripts；逐成员核对源码和 tgz。
-5. 用新的 DSH_HOME/Profile 安装、启用、冷启动、项目/Thread 创建与继续、停用、卸载；只允许脚本 fixture，禁止收费模型。
-6. 对提交树、拟推送全部历史、发布包扫描秘密/隐私/运行环境；任何未分类匹配阻止 push。
-7. 生成资产和 SHA256SUMS，确认本次授权、许可文本和资产身份后再公开/发布。
+1. 使用固定 Node / npm 执行 `npm ci`，检查锁文件无意外变化。
+2. 运行 `npm run build`、`npm run test:portable`，在 macOS arm64 额外运行 `npm run test:mac`。
+3. 保留项目及第三方许可，执行 `npm pack --ignore-scripts`，用 `tools/release/verify-package.py` 核对安装包成员。
+4. 在独立 DSH_HOME / Profile 验证安装、冷启动、项目与 Thread、续聊、升级、停用及卸载。`tools/release/check-host.py` 提供脚本模型测试，不验证真实模型质量。
+5. 用 `tools/release/scan-security.py --history --package <tgz>` 检查源码、历史和安装包。逐项审查匹配，不能直接忽略未分类结果。
+6. 为安装包和发布附件生成 SHA-256 校验和，核对版本、标签、许可及发布说明后发布。
 
-GitHub 工作流仅 build + portable offline tests，不使用 secrets、不自动发布。真实 Host/Desktop/Mac reader/模型不由该 CI 覆盖。工作流在托管端运行前只能称已配置，不能称 GitHub CI 已通过。
+GitHub Actions 负责构建和可移植离线测试，不自动发布。安装、桌面操作、实际文档读取及真实模型行为需要分别验证。安装测试不得使用日常 Profile；真实模型调用需要明确的费用授权。
 
-本地完整原历史和原包存于发布仓库之外，不得推送这些备份。发布命令与状态见 MANUAL_PUBLISH_STEPS.md。
+## 0.1.0-rc.1 的验证范围
 
-## CI 平台边界修复
+| 检查 | 结果 |
+| --- | --- |
+| macOS 完整离线测试 | 196 通过 |
+| macOS CI | 178 通过，无跳过 |
+| Ubuntu CI | 165 通过，13 项仅适用于 macOS 的测试跳过 |
+| 隔离 DSH 安装 | 全新安装、启停、冷恢复、项目与 Thread 操作、卸载通过 |
+| 从 0.0.0-final01.5 升级 | 项目、Thread、Memory、Library 保留 |
+| 安装包 | 全部成员与对应源码、依赖逐字节核对 |
 
-Hosted runner 的测试入口读取预置的 `RUNNER_TEMP`，避免产品拒绝的 `/tmp`；本地可用 `DSH_TEST_ROOT` 显式覆盖。不在 job 级 env 中引用 `runner` 上下文。本地 Linux 可使用 `DSH_TEST_ROOT=../dsh-projects-test-data npm run test:portable`，目录必须由本次测试拥有，且在 checkout 和 `/tmp` 之外。
+上述安装测试使用脚本模型；不代表真实模型任务质量或图片理解已验证。Agent Team 共装、嵌套与预设冲突不在测试范围内。
 
-11 项依赖已验证 macOS OS lease 的 Git 测试在非 Mac 显式跳过；4 项不依赖该锁的 Git 安全测试继续运行。另有原先已标记的 2 项 Profile lease 测试仅在 Mac 运行。因此 macOS portable 为 178 项，Linux 为 165 PASS + 13 SKIP；不将 SKIP 计作通过。矩阵关闭 fail-fast，保留每端完整结果。PDF/ImageIO 的实际 reader 测试仍由独立 Mac 验证覆盖，不冒充 CI 已覆盖。
+## CI 临时目录
 
-这次仅修复维护/测试入口和平台标记，不修改产品实现、Client、lockfile 或最终安装包。原始失败运行与标签保留，新候选标签另建，不 force-push 历史。
+测试入口优先使用 `DSH_TEST_ROOT`，其次使用 GitHub runner 的 `RUNNER_TEMP`，否则使用系统临时目录。Linux 测试目录应位于 checkout 和 `/tmp` 之外。13 项依赖 macOS 租约机制的测试在 Linux 跳过，其他 Git 安全测试继续执行。
 
-## 在线文案修订
+## 文档修订与已发布文件
 
-仓库 main 的首页、在线指南和 Release 页面可以在候选冻结后继续润色。文案修订不自动重打已经验证的安装包；对既有 tgz 做源码成员核对时，以该 Release 对应的候选标签为准。新的产品安装包须按上述流程另行生成并验证。
+在线文档和 Release 说明可以补充限制、修正措辞。已发布安装包、源码归档和标签保持对应；文档修订不自动重打安装包。核对旧安装包时以对应标签为准。
+
+若更新单独下载的发布说明，也要更新包含其摘要的 `SHA256SUMS.txt`。产品变更应生成新版本并重新验证。保留旧标签和测试记录，不重写发布历史。

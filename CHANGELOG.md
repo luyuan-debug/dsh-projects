@@ -1,15 +1,14 @@
-# Changelog
+# 版本记录
 
-## v0.1.0-rc.1
+## 0.1.0-rc.1
 
-- 首个 MIT 开源预发行候选，补齐项目 LICENSE 和许可元数据，保留第三方声明。
-- 产品介绍明确参考 Claude Projects，并列出已实现、尚未完成与当前不支持的能力。
-- 收录 CI 平台与测试目录修复，以及面向使用者的安装/使用文档。
-- 产品实现、安装包名及数据身份不变；重建安装包并验证全新安装和旧候选升级。
+首个 MIT 开源预发行版，适配 macOS arm64 上的 DSH `0.2.1-rc.2`。
 
+- 项目目标、项目指令、主对话和独立 Thread。
+- 项目 Memory 与 Library，支持常用文档内容读取。
+- Direct / Git Worktree、目录授权及 DSH 原生会话操作。
+- 项目暂停、归档、恢复与删除。
 
-## final01-candidate / 0.0.0-final01.5
+当前不支持 DSH 官方 Agent Team；同一 Profile 共装未验证。真实外部 MCP、自动派工、插件内 PR/CI 等功能尚未完成，详见 [已知限制](docs/KNOWN_LIMITATIONS.md)。
 
-从 FINAL-01 源码 4b86c22dc51b0691ffebdad78d4d000777286a29 整理独立维护仓库；删除发布树中的旧审计日志与重复阶段文档，保留原始 bundle 本地备份。补充安装、使用、架构、限制、迁移、安全、许可与发布文档，加入离线测试入口、固定构建工具版本和最小 CI，补齐第三方许可文本。产品实现与数据身份不变。
-
-原交付报告记录 196 项 Mac 离线测试和固定 Desktop/Host 证据；本次重新运行的结果另见 PUBLISH_REPORT.md。真实模型理解、完整 Claude parity、用户接受均保持 false。
+[完整发布说明](RELEASE_NOTES.md)
