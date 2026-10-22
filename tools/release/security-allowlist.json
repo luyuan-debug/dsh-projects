@@ -1055,5 +1055,26 @@
     "line": 26,
     "sha256": "0c32f20d663b30438bb8ff834b7f066722160720a25a90e6513a66b9baa4604d",
     "reason": "Reviewed public Zod maintainer metadata or email-validator test vectors; exact unmodified upstream tarball bytes and lockfile SHA-512 verified"
+  },
+  {
+    "path": "README.md",
+    "type": "local-account",
+    "line": 9,
+    "sha256": "6ffabb950fd83deb0016f49307b1c932e57fdc388dba38e54571c8b6167f394b",
+    "reason": "Every occurrence is part of the user-authorized GitHub repository URL; exact file bytes and all link targets reviewed. No local username path or credentials."
+  },
+  {
+    "path": "RELEASE_NOTES.md",
+    "type": "local-account",
+    "line": 25,
+    "sha256": "89f095310e31cd1b4c1eb0c6234d9c5c420989268e486506e2e8a76315b7e22d",
+    "reason": "Every occurrence is part of the user-authorized GitHub repository URL; exact file bytes and all link targets reviewed. No local username path or credentials."
+  },
+  {
+    "path": "docs/INSTALL.md",
+    "type": "local-account",
+    "line": 7,
+    "sha256": "8efae10097504e15fd255d3d44fdead5cd8d4a1d0cbb33802cb039c2be3916fa",
+    "reason": "Every occurrence is part of the user-authorized GitHub repository URL; exact file bytes and all link targets reviewed. No local username path or credentials."
   }
 ]

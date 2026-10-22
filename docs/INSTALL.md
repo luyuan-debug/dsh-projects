@@ -1,15 +1,49 @@
-# 安装
+# 安装 DSH Projects
 
-仅验证 DSH 0.2.1-rc.2 / 332895e0f7c9d4dbfb29729f5eb367fa263ff986 / macOS arm64。先校验候选包 SHA-256。DSH 插件页 → 安装第三方插件 → 输入 `.tgz` 的完整 `file:` URL → 立即启用 → 等待运行中，打开 Projects。
+当前候选已验证环境为 **macOS arm64 / DSH 0.2.1-rc.2**，对应 Host build `332895e0f7c9d4dbfb29729f5eb367fa263ff986`。其他构建和操作系统尚未完成产品兼容性验收。
 
-package 名仍为 `dsh-project-threads-wave1-spike`。正常安装不需要 `DSH_PROJECT_THREADS_*` 审计变量、测试模型或开发 overlay。未配置模型可以创建项目；执行任务仍需配置已授权模型。
+## 1. 下载并校验
 
-CLI 等价示例（只在你选择的 Profile 执行）：
+在 [Releases](https://github.com/luyuan-debug/dsh-projects/releases) 中打开当前候选，从 **Assets** 下载：
+
+- `dsh-project-threads-wave1-spike-0.0.0-final01.5.tgz`
+- `dsh-project-threads-wave1-spike-0.0.0-final01.5.tgz.sha256`
+
+两份文件放在同一目录，在该目录运行：
+
+```sh
+shasum -a 256 -c dsh-project-threads-wave1-spike-0.0.0-final01.5.tgz.sha256
+```
+
+确认输出 `OK` 后再安装。当前 Release 为私有草稿，需要相应仓库访问权限。
+
+## 2. 在 DSH 中安装
+
+打开 **插件 → 安装第三方插件**，输入 `.tgz` 的完整 `file:` 路径；安装后选择 **立即启用**，等待组件显示 **运行中**，再打开 **Projects**。
+
+安装包仍使用兼容标识 `dsh-project-threads-wave1-spike`。正常安装无需审计环境变量、测试模型或开发 overlay。
+
+## 3. 创建第一个项目
+
+创建项目并填写目标、项目指令。未配置模型时也可以先创建项目；开始模型任务前，请在 DSH 中配置并选择已授权的提供方和模型。
+
+把资料加入 Library，将长期约定保存到 Memory。在项目主对话提出任务，需要本地执行时确认工作目录和 Direct / Worktree 模式。更多操作见 [使用指南](USAGE.md)。
+
+<details>
+<summary>使用 CLI 安装</summary>
+
+在你明确选择的 Profile 中执行，将路径替换为下载文件的实际位置：
 
 ```sh
 dsh plugin --profile <profile> add file:/absolute/path/candidate.tgz --ignore-scripts
 ```
 
-宿主提供 peer 包；不要为了 peer 警告从注册表更新宿主。解析边界见 COMPATIBILITY.md。升级前按 MIGRATION.md 备份，停止任务并正常退出 DSH。
+</details>
 
-停用/卸载请使用插件页；插件入口消失不等于删除所有项目资料。需清理插件拥有的数据时先在 Projects 删除项目；历史归档保留。卸载不会隐式删除用户原目录。
+## 升级、停用和卸载
+
+升级前暂停项目、停止任务、正常退出 DSH，并按 [迁移与回退](MIGRATION.md) 备份数据。
+
+停用或卸载可使用 DSH 插件页。卸载不会自动清空项目资料；需要清理插件拥有的数据时，请先在 Projects 内删除项目。宿主会话历史归档保留，用户原目录不删除。
+
+宿主 peer 包由 DSH 提供。安装时可能出现 unmet peer 警告，其实际含义和已验证解析边界见 [兼容性说明](COMPATIBILITY.md)。

@@ -29,7 +29,12 @@ def scan(name, data, revision='working-tree'):
                              'reason': accepted['reason'] if accepted else 'Requires explicit review'})
     local_account = getpass.getuser().encode()
     if len(local_account) > 3 and local_account.lower() in data.lower():
-        findings.append({'path': name, 'type': 'local-account', 'revision': revision, 'status': 'BLOCK'})
+        line = data[:data.lower().index(local_account.lower())].count(b'\n') + 1
+        accepted = next((row for row in allow if row['path'] == name and row['type'] == 'local-account'
+                         and row['sha256'] == digest and row['line'] == line), None)
+        findings.append({'path': name, 'type': 'local-account', 'line': line, 'sha256': digest,
+                         'revision': revision, 'status': 'ALLOWLISTED' if accepted else 'BLOCK',
+                         'reason': accepted['reason'] if accepted else 'Requires explicit review'})
     if name.endswith(('.docx', '.xlsx', '.pptx')):
         try:
             with zipfile.ZipFile(io.BytesIO(data)) as z:
