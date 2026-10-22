@@ -21,3 +21,7 @@ Hosted runner 的测试入口读取预置的 `RUNNER_TEMP`，避免产品拒绝�
 11 项依赖已验证 macOS OS lease 的 Git 测试在非 Mac 显式跳过；4 项不依赖该锁的 Git 安全测试继续运行。另有原先已标记的 2 项 Profile lease 测试仅在 Mac 运行。因此 macOS portable 为 178 项，Linux 为 165 PASS + 13 SKIP；不将 SKIP 计作通过。矩阵关闭 fail-fast，保留每端完整结果。PDF/ImageIO 的实际 reader 测试仍由独立 Mac 验证覆盖，不冒充 CI 已覆盖。
 
 这次仅修复维护/测试入口和平台标记，不修改产品实现、Client、lockfile 或最终安装包。原始失败运行与标签保留，新候选标签另建，不 force-push 历史。
+
+## 在线文案修订
+
+仓库 main 的首页、在线指南和 Release 页面可以在候选冻结后继续润色。文案修订不自动重打已经验证的安装包；对既有 tgz 做源码成员核对时，以该 Release 对应的候选标签为准。新的产品安装包须按上述流程另行生成并验证。

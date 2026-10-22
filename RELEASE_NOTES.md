@@ -1,15 +1,69 @@
-# FINAL-01 candidate — 0.0.0-final01.5
+# DSH Projects · 首个候选版
 
-候选 tag：`final01-candidate`。仅 Private 仓库的 Draft + Prerelease，不标记 Latest。
+**把一次对话，延续成一个可以持续推进的项目。**
 
-将 FINAL-01 整理为独立可维护源码树，补全安装/使用/架构/兼容性/迁移/安全/许可/发布文档、第三方许可、固定工具版本、离线测试入口与最小 CI。产品实现、Client、安装/数据身份均与源码 `4b86c22dc51b0691ffebdad78d4d000777286a29` 一致。package 的 files 列表更新，因此新包哈希不同于原交付；版本保留不变。
+DSH Projects 为 DeepSeek Harness 带来本地项目工作区：围绕目标组织对话，让独立 Thread 承接任务，再用 Memory 与 Library 留住项目需要的上下文。
 
-验证：Node 26.8.1 / npm 11.19.0，锁文件未变，Client 重建哈希一致；Mac 离线 196/196，portable 离线 178/178。新 DSH_HOME/Profile 中安装、启用、独立 Thread、Host 检视/直接续聊/协调器继续同一 Session、冷恢复、停用/重新启用、卸载及普通会话通过。776 个包成员与源码及安装目录一致。收费模型调用 0；本轮证据为真实 Host + 脚本模型，不等于 Desktop GUI 或真实模型语义验收。
+这个候选版聚焦于日常项目工作的基础流程——**建立项目、加入资料、派发任务、跟进执行，以及在之后继续工作。**
 
-已验证 DSH 0.2.1-rc.2 / Host 332895e0f7c9d4dbfb29729f5eb367fa263ff986，macOS arm64 26.5.1 (25F80)。安装有 unmet peer 警告，peers check exit=1；固定 Host 运行期功能通过，不推导其他构建兼容。GitHub CI 尚未运行。
+## 这次带来了什么
 
-真实外部 MCP、自动创建 Thread 的 Routine、产品内 PR/CI、多可写仓库高级流程未闭合。本地执行，无云 Worker。PDF/PNG/JPEG/现代 OOXML 有明确安全/范围限制，无 OCR/宏执行/公式计算/通用保真排版。项目删除清理插件数据但归档保留宿主 Session 历史；用户原文件与仓库不删除。真实模型语义、完整 Claude parity、用户接受仍为 false。
+- **项目主对话与独立任务。** 在主对话中组织工作，创建或继续已有 Thread；每个 Thread 保留独立会话，可进入后直接续聊、停止和恢复。
+- **可维护的项目记忆。** 保存、编辑与忘记 Memory 条目，保留来源和版本，供项目按需引用。
+- **随项目组织的资料库。** 在 Library 导入、预览、替换和下载资料，按需读取 PDF、PNG/JPEG 与现代 Office 文档的受支持内容。
+- **有明确授权边界的本地执行。** 使用 Direct 或 Git Worktree，在确认过的工作目录中开展任务；Conversation、模型、审批和 Stop 复用 DSH 原生能力。
+- **项目生命周期。** 支持暂停、归档和恢复。确认删除项目后，清理插件数据并归档保留宿主会话历史；用户原文件与仓库保留。
 
-本项目许可证待用户选择；第三方声明不授予本项目开源许可。保持私有与 Draft。
+## 安装与开始使用
 
-安装包 SHA-256：`04ff55627e134d3e739afe0cd78185c35dff5c01d75da30619377e2b6123bd8f`。
+**已验证环境：macOS arm64 · DSH 0.2.1-rc.2**
+
+1. 从本页 **Assets** 下载 `.tgz` 安装包和同名 `.sha256` 校验文件，放到同一目录并核对校验和。
+2. 打开 DSH 的插件页，选择安装第三方插件，输入 `.tgz` 的完整 `file:` 路径，启用后等待组件显示“运行中”。
+3. 打开 **Projects**，创建项目，设置目标和模型；加入资料后，从主对话开始工作。
+
+[详细安装步骤](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/INSTALL.md) · [使用指南](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/USAGE.md) · [迁移与回退](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/MIGRATION.md)
+
+## 这是一个候选版本
+
+本地核心流程已经完成固定环境验证，**真实模型语义、图像理解和用户接受验收尚未完成**。当前不宣称完整 Claude Projects parity，也不承诺其他 DSH 构建或操作系统的产品兼容性。
+
+真实外部 MCP、自动创建 Thread 的 Routine、插件内 PR/CI 协作和多可写仓库高级流程尚未完成；当前没有云 Worker。文档读取不提供 OCR、宏执行、公式计算或通用 Office 保真排版。未发送的临时附件不承诺跨退出持久化。
+
+安装时的 peer 警告仍保留，固定 Host 的实际运行验证不能替代 peer 检查通过。请结合 [兼容性说明](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/COMPATIBILITY.md) 与 [已知限制](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/KNOWN_LIMITATIONS.md) 评估试用范围。
+
+<details>
+<summary><strong>验证记录与下载校验</strong></summary>
+
+| 验证范围 | 结果 |
+| --- | --- |
+| 原包 Mac 完整离线测试 | 196 通过 |
+| 当前候选 macOS CI | 178 通过，0 跳过 |
+| 当前候选 Ubuntu CI | 165 通过，13 项 Mac 专用测试跳过 |
+| 隔离 Host 核心流程 | 安装、启停、项目与 Thread、续聊、冷恢复、卸载通过 |
+| 安装包一致性 | 776 个成员与候选源码/安装目录逐字节一致 |
+
+[候选 CI 记录](https://github.com/luyuan-debug/dsh-projects/actions/runs/39801741803)。Host 测试使用脚本模型，未调用收费模型；本次文案修订没有重新进行 Desktop 或真实模型验收。
+
+- 安装版本：`0.0.0-final01.5`
+- 候选标签：`final01-candidate-ci.2`
+- 已验证 Host build：`332895e0f7c9d4dbfb29729f5eb367fa263ff986`
+- 内部包名：`dsh-project-threads-wave1-spike`（保留安装与数据兼容标识）
+
+将安装包与校验文件放在同一目录后运行：
+
+```sh
+shasum -a 256 -c dsh-project-threads-wave1-spike-0.0.0-final01.5.tgz.sha256
+```
+
+安装包 SHA-256：
+
+```text
+04ff55627e134d3e739afe0cd78185c35dff5c01d75da30619377e2b6123bd8f
+```
+
+</details>
+
+---
+
+**发布状态：Draft Prerelease，尚未公开。** 本项目许可证待维护者选择；第三方许可声明已保留。开源准备完成后，再按确认的发布流程对外开放。
