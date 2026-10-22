@@ -5,9 +5,12 @@ permissions:
 jobs:
   offline:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
+    env:
+      DSH_TEST_ROOT: ${{ runner.temp }}/dsh-projects-fixtures
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

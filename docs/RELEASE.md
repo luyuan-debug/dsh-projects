@@ -1,6 +1,6 @@
 # 发布维护
 
-当前只准备私有仓库的 Draft Prerelease，不自动公开、不选择许可证、不标记 Latest。当前 tag 为 final01-candidate，package version 保留 0.0.0-final01.5。
+当前只准备私有仓库的 Draft Prerelease，不自动公开、不选择许可证、不标记 Latest。当前 CI 修复候选 tag 为 final01-candidate-ci.1，原 final01-candidate 保留；package version 仍为 0.0.0-final01.5。
 
 1. 固定 Node/npm，执行 npm ci，确认 lockfile 无变化。
 2. npm run build；核对 Client 与 FINAL-01 基线哈希。
@@ -13,3 +13,11 @@
 GitHub 工作流仅 build + portable offline tests，不使用 secrets、不自动发布。真实 Host/Desktop/Mac reader/模型不由该 CI 覆盖。工作流在托管端运行前只能称已配置，不能称 GitHub CI 已通过。
 
 本地完整原历史和原包存于发布仓库之外，不得推送这些备份。最短后续动作见 MANUAL_PUBLISH_STEPS.md。
+
+## CI 平台边界修复
+
+Hosted runner 的测试根目录使用 `DSH_TEST_ROOT=${{ runner.temp }}/dsh-projects-fixtures`，避免产品拒绝的 `/tmp`；入口也接受 RUNNER_TEMP。本地 Linux 可使用 `DSH_TEST_ROOT=../dsh-projects-test-data npm run test:portable`，目录必须由本次测试拥有，且在 checkout 和 `/tmp` 之外。
+
+11 项依赖已验证 macOS OS lease 的 Git 测试在非 Mac 显式跳过；4 项不依赖该锁的 Git 安全测试继续运行。另有原先已标记的 2 项 Profile lease 测试仅在 Mac 运行。因此 macOS portable 为 178 项，Linux 为 165 PASS + 13 SKIP；不将 SKIP 计作通过。矩阵关闭 fail-fast，保留每端完整结果。PDF/ImageIO 的实际 reader 测试仍由独立 Mac 验证覆盖，不冒充 CI 已覆盖。
+
+这次仅修复维护/测试入口和平台标记，不修改产品实现、Client、lockfile 或最终安装包。原始失败运行与标签保留，新候选标签另建，不 force-push 历史。
