@@ -2,7 +2,7 @@ import { OwnerRuntimeError } from './agent-owner-runtime.mjs';
 
 /** Ordered admission, command draining, resource cancellation, runtime and store teardown. */
 export class HostLifecycle {
-  #accepting = true; #tail = Promise.resolve(); #closing; #cancellers = []; #errors = [];
+  #accepting = true; #tail = Promise.resolve(); #closing; #cancellers = []; #errors = []; #independent = new Set();
   constructor({ runtime, store }) { this.runtime = runtime; this.store = store; }
   get accepting() { return this.#accepting; }
   ownCancellation(cancel) {
@@ -15,6 +15,12 @@ export class HostLifecycle {
     this.#tail = result.then(() => undefined, error => { this.#errors.push(error); });
     return result;
   }
+  runIndependent(operation) {
+    if (!this.#accepting) return Promise.reject(new OwnerRuntimeError('HOST_CLOSING', 'Command admission has stopped'));
+    const result=Promise.resolve().then(operation);this.#independent.add(result);
+    void result.then(()=>this.#independent.delete(result),error=>{this.#independent.delete(result);this.#errors.push(error);});
+    return result;
+  }
   dispose() {
     if (this.#closing) return this.#closing;
     this.#accepting = false;
@@ -25,6 +31,7 @@ export class HostLifecycle {
     for (const cancel of this.#cancellers.splice(0)) {
       try { await cancel(); } catch (error) { this.#errors.push(error); }
     }
+    await Promise.allSettled([...this.#independent]);
     await this.#tail;
     try { await this.runtime.dispose(); } catch (error) { this.#errors.push(error); }
     try { await this.store.close(); } catch (error) { this.#errors.push(error); }

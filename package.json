@@ -1,6 +1,6 @@
 {
   "name": "dsh-project-threads-wave1-spike",
-  "version": "0.1.0-rc.1",
+  "version": "0.3.0-rc.1",
   "private": true,
   "type": "module",
   "main": "src/product/host/thread-links-plugin.mjs",
@@ -19,9 +19,13 @@
     "docs/COMPATIBILITY.md",
     "docs/KNOWN_LIMITATIONS.md",
     "docs/MIGRATION.md",
+    "docs/HINDSIGHT.md",
     "THIRD_PARTY_NOTICES.md",
     "third_party/licenses",
-    "LICENSE"
+    "LICENSE",
+    "UPSTREAM_PROVENANCE.json",
+    "UPSTREAM_PATCHES.md",
+    "docs/DIRECTORY_SELECTION.md"
   ],
   "dsh": {
     "bundle": {
@@ -69,7 +73,11 @@
     "test:mac04r2": "node --test tests/mac04r2/*.test.mjs",
     "test": "node tools/release/test-offline.mjs",
     "test:portable": "node tools/release/test-offline.mjs --portable",
-    "test:mac": "node tools/release/test-offline.mjs --mac"
+    "test:mac": "node tools/release/test-offline.mjs --mac",
+    "test:mem03": "node --test tests/mem03/*.test.mjs",
+    "test:mem04": "node --test tests/mem04/*.test.mjs",
+    "test:mem04r1": "node --test tests/mem04r1/*.test.mjs",
+    "test:memory": "node --test tests/mem03/*.test.mjs tests/mem04/*.test.mjs tests/mem04r1/*.test.mjs"
   },
   "dependencies": {
     "zod": "4.4.3"

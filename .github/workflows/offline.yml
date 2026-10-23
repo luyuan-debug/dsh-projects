@@ -20,3 +20,9 @@ jobs:
       - run: npm run build
       - run: git diff --exit-code -- package-lock.json lib/client.js
       - run: npm run test:portable
+      - name: Project memory and optional Hindsight regressions
+        run: npm run test:memory
+        env:
+          TMPDIR: ${{ runner.temp }}
+      - name: Memory interface regressions
+        run: node tools/mem04r1/ui-check.mjs "$RUNNER_TEMP/memory-ui.json"

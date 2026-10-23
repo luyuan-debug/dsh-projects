@@ -12,7 +12,7 @@ export async function upgradeProjectsUnit({ctx,name,backupRoot,scopes,links,appr
  try{bytes=await readFile(path)}catch(error){if(error.code==='ENOENT')return{fresh:true};throw error}
  const raw=JSON.parse(bytes);if(raw.unit?.name!==name)fail('MIGRATION_IDENTITY','Storage unit identity mismatch');
  if(raw.unit.version===targetVersion)return{alreadyUpgraded:true};
- if(![2,3].includes(raw.unit.version)||raw.unit.version>=targetVersion)fail('MIGRATION_VERSION','Unsupported Project schema');
+ if(![2,3,4].includes(raw.unit.version)||raw.unit.version>=targetVersion)fail('MIGRATION_VERSION','Unsupported Project schema');
  if(!approved)fail('MIGRATION_COORDINATION_REQUIRED','Legacy upgrade needs an explicitly owned, quiescent test Profile or a coordinated user-approved production migration');
  const held=[];
  try{

@@ -1125,5 +1125,159 @@
     "line": 9,
     "sha256": "9eff9c8e672a455d4acf47437c20f8e05a7f18afa226644baff5226416b72b1c",
     "reason": "All occurrences are reviewed public repository URLs; no local machine paths or credentials."
+  },
+  {
+    "path": "README.md",
+    "type": "local-account",
+    "line": 11,
+    "sha256": "d0d5a3882989743493a3c3a79dffb3d23a11ba64b90e55705f2911957ae88ac6",
+    "reason": "Reviewed existing public repository URLs retained in local MEM03 candidate; no local account paths or credentials."
+  },
+  {
+    "path": "THIRD_PARTY_NOTICES.md",
+    "type": "email",
+    "line": 16,
+    "sha256": "3b326622b592824591d4328550f856d6e331bb3d82c87f3e065abebede827d15",
+    "reason": "Reviewed unchanged public MIT donor copyright contact at fixed commit 21fc69e3; license bytes verified against upstream."
+  },
+  {
+    "path": "third_party/licenses/dsh-project-memory-MIT.txt",
+    "type": "email",
+    "line": 3,
+    "sha256": "16efe3fc6cf1b870ac4a374c6672ec78325cf41c21292fbf82946ff7cd83c74d",
+    "reason": "Reviewed unchanged public MIT donor copyright contact at fixed commit 21fc69e3; license bytes verified against upstream."
+  },
+  {
+    "path": "tools/mem03/host-extra-probe.mjs",
+    "type": "email",
+    "line": 47,
+    "sha256": "8328e68b9c8a96218e2b00c2bbd92910b73afdfe9d983f6849cde95fcf7b5ac8",
+    "reason": "Reviewed synthetic Git author fixture at reserved .invalid domain for owned local worktree tests; no real personal address."
+  },
+  {
+    "path": "tools/mem03/host-extra-probe.mjs",
+    "type": "email",
+    "line": 50,
+    "sha256": "a3a5097b95deab69d9b4f5e64892b4ef80a985785ba8556ba980a574d8ee3d53",
+    "reason": "Reviewed synthetic Git author fixture at reserved .invalid domain for owned local worktree/history tests; no real personal address."
+  },
+  {
+    "path": "README.md",
+    "type": "local-account",
+    "line": 11,
+    "sha256": "1abb04f50acf6a6674af7f11766109db60489b122151370927d8b481a5c4ad59",
+    "reason": "Public repository owner in the existing GitHub release link, not a private local path."
+  },
+  {
+    "path": "tests/mem04/hindsight-runtime.test.mjs",
+    "type": "private-key",
+    "line": 177,
+    "sha256": "88035e5f7c2d6e0f7c8af0c9afdec9059218ecda4c3069590e1d4d33c837bb7b",
+    "reason": "Synthetic rejection-test inputs only; no usable private key or credential."
+  },
+  {
+    "path": "tests/mem04/hindsight-runtime.test.mjs",
+    "type": "credential-assignment",
+    "line": 63,
+    "sha256": "88035e5f7c2d6e0f7c8af0c9afdec9059218ecda4c3069590e1d4d33c837bb7b",
+    "reason": "Synthetic rejection-test inputs only; no usable private key or credential."
+  },
+  {
+    "path": "tests/mem04/standard.test.mjs",
+    "type": "private-key",
+    "line": 44,
+    "sha256": "7f2ba2e4e9f8754019e2f687e86677804664593ffa0ffc20be496384b4fdb42c",
+    "reason": "Synthetic credential fixtures intentionally exercise evidence-index rejection; no actual credentials."
+  },
+  {
+    "path": "tests/mem04/standard.test.mjs",
+    "type": "bearer-credential",
+    "line": 43,
+    "sha256": "7f2ba2e4e9f8754019e2f687e86677804664593ffa0ffc20be496384b4fdb42c",
+    "reason": "Synthetic credential fixtures intentionally exercise evidence-index rejection; no actual credentials."
+  },
+  {
+    "path": "tests/mem04/standard.test.mjs",
+    "type": "credential-assignment",
+    "line": 45,
+    "sha256": "7f2ba2e4e9f8754019e2f687e86677804664593ffa0ffc20be496384b4fdb42c",
+    "reason": "Synthetic credential fixtures intentionally exercise evidence-index rejection; no actual credentials."
+  },
+  {
+    "path": "README.md",
+    "type": "local-account",
+    "line": 11,
+    "sha256": "0a7a15633a79adc549001e059c17028d0e531f02a64499cebe7d875f7f7d9468",
+    "reason": "Public GitHub repository owner in existing release URL."
+  },
+  {
+    "path": "tests/mem04/hindsight-runtime.test.mjs",
+    "type": "private-key",
+    "line": 177,
+    "sha256": "23a391b3c53f5597b55b108be53c9b0b5686d2cf2197f8e3c6cb698a360804ae",
+    "reason": "Reviewed synthetic rejection fixtures; append-only race tests contain no actual credentials."
+  },
+  {
+    "path": "tests/mem04/hindsight-runtime.test.mjs",
+    "type": "credential-assignment",
+    "line": 63,
+    "sha256": "23a391b3c53f5597b55b108be53c9b0b5686d2cf2197f8e3c6cb698a360804ae",
+    "reason": "Reviewed synthetic rejection fixtures; append-only race tests contain no actual credentials."
+  },
+  {
+    "path": "<commit-metadata>",
+    "type": "local-account",
+    "line": 2,
+    "sha256": "c1a0bb65f01f6e09c04621d27c4d037f5c6d6c01d250f4884743e0ea99c356dd",
+    "reason": "Preserved user-supplied MEM03 source attribution or public GitHub repository owner; no credential; local delivery only."
+  },
+  {
+    "path": "README.md",
+    "type": "local-account",
+    "line": 11,
+    "sha256": "ea317292fe40eeb76576aa7451716d924db52ad3b9513c8792bc16afd19eae7e",
+    "reason": "Preserved user-supplied MEM03 source attribution or public GitHub repository owner; no credential; local delivery only."
+  },
+  {
+    "path": "README.md",
+    "type": "local-account",
+    "line": 11,
+    "sha256": "d844dac736334c1f42a4cc4102f4c021b024acb86d6d2df0c855021eebe5618d",
+    "reason": "Existing public GitHub repository owner in release link, no private credential."
+  },
+  {
+    "path": "README.md",
+    "type": "local-account",
+    "line": 11,
+    "sha256": "0699a6c46394c8b669e891b0990f4b0e8d2b7f06dd3b2022a2e7928ab98542b8",
+    "reason": "Reviewed public GitHub repository owner in the download URL; no local account or private state"
+  },
+  {
+    "path": "CHANGELOG.md",
+    "type": "local-account",
+    "line": 40,
+    "sha256": "7d68eca4f8d0d80c57558d22a56a5e95ca3c9ff87b3a07c722340a428d694bdd",
+    "reason": "Reviewed public GitHub repository owner in release/download/document links; no local account state or private path"
+  },
+  {
+    "path": "README.md",
+    "type": "local-account",
+    "line": 9,
+    "sha256": "be8f27dc44b538a9ab39b99738b5a076292c7b0136592020f7c2278a91beefe8",
+    "reason": "Reviewed public GitHub repository owner in release/download/document links; no local account state or private path"
+  },
+  {
+    "path": "RELEASE_NOTES.md",
+    "type": "local-account",
+    "line": 45,
+    "sha256": "5fa5be68ef62d1e36174fc32e4f10cbf9f00e2b140b634e13522ceb6d93d3d30",
+    "reason": "Reviewed public GitHub repository owner in release/download/document links; no local account state or private path"
+  },
+  {
+    "path": "docs/INSTALL.md",
+    "type": "local-account",
+    "line": 11,
+    "sha256": "02a2849838f635acc5c6da2ef0bbd488b259ef0d70428cb029b613065e82e1b2",
+    "reason": "Reviewed public GitHub repository owner in release/download/document links; no local account state or private path"
   }
 ]

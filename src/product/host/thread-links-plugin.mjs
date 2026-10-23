@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { appendPluginRecord } from '@deepseek-ai/dsh-session';
 import { AgentOwnerRuntime } from './agent-owner-runtime.mjs';
 import { HostLifecycle } from './host-lifecycle.mjs';
-import { executeCommand } from './command-admission.mjs';
+import { executeCommand, executeIndependent } from './command-admission.mjs';
 import { canonicalPath, createFixtureRoot, isWithin, profileDomainName, resolveEnvironment } from './environment.mjs';
 import { AssociationError, ThreadAssociations, publicLink } from '../domain/thread-associations.mjs';
 import { openAssociationDomain } from '../backends/local/domain-store.mjs';
@@ -179,15 +179,26 @@ export async function apply(ctx, config = {}) {
     path: API_PATH, methods: ['GET','POST'], requestBody: 'buffered',
     async fetch(request) {
       try {
+        let body;
+        if(request.method!=='GET'){
+          try{validateProjectRequest(request)}catch(error){throw new AssociationError(error.message,'Same-origin application/json Project operation required');}
+          const raw=await request.text();if(raw.length>65536)throw new AssociationError('INVALID_REQUEST','Request is too large');
+          body=JSON.parse(raw);
+          if(['workspace.pick','workspace.cancelPick'].includes(body.op)){
+            const input=body.input??{};
+            if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).some(key=>key!=='pickerId')||typeof input.pickerId!=='string')throw new AssociationError('PICKER_INVALID_INPUT','Directory selection accepts only an opaque picker ID, never a folder path');
+            const value=await executeIndependent(lifecycle,()=>body.op==='workspace.cancelPick'
+              ?projects.public.cancelPick(input)
+              :projects.public.pickFolder({...input,signal:request.signal,commit:operation=>executeCommand(lifecycle,operation)}));
+            return Response.json({ok:true,value});
+          }
+        }
         const result = await executeCommand(lifecycle, async () => {
           if (request.method === 'GET') {
             const projectId=new URL(request.url).searchParams.get('projectId');
             return {...await service.state(projectId),...await projects.public.state(projectId)};
           }
-          try{validateProjectRequest(request)}catch(error){throw new AssociationError(error.message,'Same-origin application/json Project operation required');}
-          const raw = await request.text(); if (raw.length > 65536) throw new AssociationError('INVALID_REQUEST', 'Request is too large');
-          const body = JSON.parse(raw);
-          const operations={'project.lifecycle':input=>projects.public.lifecycle(input),'memory.write':input=>projects.public.memoryWrite(input),'memory.delete':input=>projects.public.memoryDelete(input),'memory.read':input=>projects.public.memoryRead(input),'library.read':input=>projects.public.libraryRead(input),'library.delete':input=>projects.public.libraryDelete(input),'project.sendLocal':input=>projects.public.sendLocal(input,'authenticated-owner-ui'),'workspace.managed':input=>projects.public.managedFolder(input),'workspace.pick':()=>projects.public.pickFolder(),'workspace.choose':input=>projects.public.choose(input),'workspace.confirm':input=>projects.public.confirm(input,'authenticated-owner-ui'),'workspace.decide':input=>projects.public.decide(input),'workspace.revoke':input=>projects.public.revoke(input),'workspace.disconnect':input=>projects.public.disconnect(input),'project.activate':input=>projects.public.activate(input.projectId),'project.create':input=>projects.public.create(input),'project.update':input=>projects.public.update(input),'project.models':input=>projects.public.models(input.provider),'project.restart':input=>projects.public.restart(input.projectId),'coordinator.stop':input=>projects.public.stopCoordinator(input.projectId),'thread.stop':input=>projects.public.stop(input),'proposal.start':input=>projects.public.start(input),'report.retry':input=>projects.public.retryReport(input)};
+          const operations={'hindsight.settings':input=>projects.public.hindsightSettings(input),'hindsight.check':input=>projects.public.hindsightCheck({...input,signal:request.signal}),'hindsight.recall':input=>projects.public.hindsightRecall({...input,signal:request.signal}),'hindsight.createBank':input=>projects.public.hindsightCreateBank({...input,signal:request.signal}),'hindsight.disconnect':input=>projects.public.hindsightDisconnect(input),'hindsight.retry':input=>projects.public.hindsightRetry({...input,signal:request.signal}),'hindsight.forget':input=>projects.public.hindsightForget({...input,signal:request.signal}),'project.lifecycle':input=>projects.public.lifecycle(input),'memory.write':input=>projects.public.memoryWrite(input),'memory.fileRead':input=>projects.public.memoryFileRead(input),'memory.indexWrite':input=>projects.public.memoryIndexWrite(input),'memory.transition':input=>projects.public.memoryTransition(input),'memory.export':input=>projects.public.memoryExport(input),'memory.search':input=>projects.public.memorySearch(input),'memory.source':input=>projects.public.memorySource(input),'memory.settings':input=>projects.public.memorySettings(input),'evidence.index':input=>projects.public.evidenceIndex(input),'memory.delete':input=>projects.public.memoryDelete(input),'memory.read':input=>projects.public.memoryRead(input),'library.read':input=>projects.public.libraryRead(input),'library.delete':input=>projects.public.libraryDelete(input),'project.sendLocal':input=>projects.public.sendLocal(input,'authenticated-owner-ui'),'workspace.managed':input=>projects.public.managedFolder(input),'workspace.choose':input=>projects.public.choose(input),'workspace.confirm':input=>projects.public.confirm(input,'authenticated-owner-ui'),'workspace.decide':input=>projects.public.decide(input),'workspace.revoke':input=>projects.public.revoke(input),'workspace.disconnect':input=>projects.public.disconnect(input),'project.activate':input=>projects.public.activate(input.projectId),'project.create':input=>projects.public.create(input),'project.update':input=>projects.public.update(input),'project.models':input=>projects.public.models(input.provider),'project.restart':input=>projects.public.restart(input.projectId),'coordinator.stop':input=>projects.public.stopCoordinator(input.projectId),'thread.stop':input=>projects.public.stop(input),'proposal.start':input=>projects.public.start(input),'report.retry':input=>projects.public.retryReport(input)};
           if(operations[body.op])return operations[body.op](body.input??{});
           if(!config.developmentEntry)throw new AssociationError('DEVELOPMENT_ENTRY_DISABLED','Manual test operations are disabled');
           if (body.op === 'bootstrap') return service.bootstrap(body.input);
