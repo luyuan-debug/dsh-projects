@@ -1,54 +1,57 @@
 # DSH Projects
 
-基于 **Claude Projects** 的项目组织方式，为 **DeepSeek Harness** 实现的第三方本地项目插件。
+基于 **Claude Projects** 的项目组织方式，为 **DeepSeek Harness** 开发的第三方项目插件。
 
-**适配版本：DSH 0.2.1-rc.2 · macOS arm64**
+**适配 DSH 0.2.1-rc.2 · macOS arm64**
 
-**当前版本：v0.1.0-rc.1 · 预发行版 · MIT**
+**当前版本：v0.3.0-rc.1 · MIT · 预发行版**
 
-[下载安装包](https://github.com/luyuan-debug/dsh-projects/releases/tag/v0.1.0-rc.1) · [安装指南](docs/INSTALL.md) · [使用指南](docs/USAGE.md) · [兼容性](docs/COMPATIBILITY.md)
-
-> **当前版本不支持 DSH 官方 Agent Team。** 请勿在项目主对话（Coordinator）或 Thread 中启用 Agent Team，也不要选择 Agent Team 预设。同一 Profile 同时安装两个插件尚未经过兼容性测试；需要分别使用时，请使用独立 Profile。[详细说明](docs/COMPATIBILITY.md#agent-team)
+[下载安装包](https://github.com/luyuan-debug/dsh-projects/releases/tag/v0.3.0-rc.1) · [安装指南](docs/INSTALL.md) · [使用指南](docs/USAGE.md)
 
 ## 核心能力
 
 **把一次对话，延续成一个可以持续推进的项目。**
 
-项目主对话用来讨论目标、安排任务；Thread 用来执行具体工作。Memory 保存项目约定，Library 存放参考资料，方便后续对话继续使用。
+在项目主对话里确定目标，通过独立 Thread 执行任务。Memory 保存项目约定，Library 管理参考资料，后续对话可以继续使用。
 
-| 功能 | 已实现的内容 |
+| 功能 | 内容 |
 | --- | --- |
-| 项目与主对话 | 设置目标和项目指令，通过 Coordinator 创建或继续 Thread |
-| 独立 Thread | 每个任务使用独立会话，可进入续聊、停止执行，在 Overview 查看状态 |
-| Memory | 保存、编辑和删除记忆，查看来源与版本 |
-| Library | 导入、预览、替换、下载资料，读取 PDF、PNG/JPEG、DOCX、XLSX、PPTX 的受支持内容 |
-| 本地工作区 | 授权目录后使用 Direct 或 Git Worktree，沿用 DSH 的模型选择、审批和停止操作 |
-| 项目管理 | 暂停、归档、恢复和删除项目 |
+| 项目与任务 | 项目目标、项目指令、独立 Thread、续聊与状态概览 |
+| 项目记忆 | 概要、需求、约束、决定、问题和经验；支持编辑、来源、版本和历史 |
+| 资料检索 | 在授权范围内检索工程文本和 Library 资料 |
+| 可选历史记忆 | 连接 `Hindsight`，召回历史经验；任务报告写回需单独开启 |
+| 资料库 | 导入、预览和下载 PDF、图片及常见 Office 文档 |
+| 本地执行 | Direct / Git Worktree，沿用 DSH 的模型、审批和停止操作 |
+| 项目管理 | 暂停、归档、恢复和删除 |
 
-参考 Claude Projects 不代表功能完全相同。本插件与 Claude Projects 没有官方关联。
+## v0.3.0-rc.1 更新
 
-## 尚未实现与使用限制
+- 完善项目记忆：区分当前内容、候选和历史，保留来源与修改记录。
+- 增加记忆索引说明，并在使用记录中分别列出索引预览和全文。
+- 加入可选的 `Hindsight` 连接，修复连接失败后仍显示旧成功状态的问题。
+- 目录选择支持取消和超时，等待期间可以继续操作项目。
 
-- **Agent Team：** 不支持在 Project 内运行，也不支持 Coordinator 调度 Team 成员；同一 Profile 共装未验证。
-- **扩展与自动化：** 真实外部 MCP 接入、自动创建 Thread 的 Routine、插件内 PR/CI 协作及多可写仓库流程尚未完成；没有云端 Worker。
-- **文档处理：** 不提供 OCR、旧版 Office、宏执行、公式计算或完整 Office 排版还原。
-- **验证范围：** 本地核心流程已在上述 DSH 版本验证，实际模型的任务完成质量和图片理解尚未验证。其他 DSH 构建与操作系统暂不在已验证范围内。
+[完整更新说明](RELEASE_NOTES.md) · [版本记录](CHANGELOG.md)
 
-完整说明见 [已知限制](docs/KNOWN_LIMITATIONS.md)。
+## 安装与升级
 
-## 开始使用
+从 Release 下载 `.tgz` 和同名 `.sha256` 文件，校验后在 DSH 的插件页面安装。建议先在独立 Profile 试用。
 
-1. 下载 Release 中的 `.tgz` 和同名 `.sha256` 文件，按 [安装指南](docs/INSTALL.md) 核对后安装、启用。
-2. 打开 **Projects**，创建项目，填写目标与项目指令，选择已配置的模型。
-3. 将参考资料加入 **Library**，将需要保留的约定写入 **Memory**。
-4. 在主对话提出任务。需要操作本地文件时，确认工作目录及 Direct / Worktree 模式，再进入 Thread 跟进。
+**从 v0.1.0-rc.1 升级前请备份数据。** 新版变更了存储格式，需要手动批准迁移；回退时须恢复旧包和配套备份。步骤见 [升级与回退](docs/MIGRATION.md)。
 
-资料预览在本机处理；模型请求可能将资料发送给你在 DSH 中选择的服务商。删除项目会清理插件数据，并归档保留 DSH 会话历史；用户原文件、仓库和 Worktree 不会被删除。卸载插件不会自动清空项目资料。
+项目记忆默认在本地使用，不需要 `Hindsight`。需要外部历史时，按 [连接说明](docs/HINDSIGHT.md) 配置服务和项目记忆库。
 
-## 文档与开发
+## 当前限制
 
-- [使用指南](docs/USAGE.md) · [升级与回退](docs/MIGRATION.md)
-- [架构](docs/ARCHITECTURE.md) · [构建与测试](CONTRIBUTING.md) · [发布维护](docs/RELEASE.md)
-- [版本记录](CHANGELOG.md) · [报告安全问题](SECURITY.md)
+- **不支持在 Project 内使用 DSH 官方 Agent Team。** 同一 Profile 共装尚未测试；需要两者时，请使用独立 Profile。
+- `Hindsight` 默认关闭。连接测试使用模拟服务，真实记忆库读写和真实模型效果尚未测试。
+- 目录选择已测试取消和超时处理，完整的原生选择与授权流程尚未完成测试。
+- 暂不提供真实外部 MCP 接入、自动派工、插件内 PR/CI 协作、多可写仓库管理或云端 Worker。
+- 文档读取不支持 OCR、旧版 Office、宏执行、公式计算或完整排版还原。
+- 仅验证了上述 DSH 版本和 macOS arm64；真实模型的任务质量和图片理解尚未测试。
 
-本项目采用 [MIT 许可证](LICENSE)，第三方组件的许可见 [第三方声明](THIRD_PARTY_NOTICES.md)。
+[兼容性](docs/COMPATIBILITY.md) · [已知限制](docs/KNOWN_LIMITATIONS.md) · [构建与测试](docs/RELEASE.md)
+
+本插件参考 Claude Projects，未实现其全部功能，与 Claude Projects 没有官方关联。
+
+采用 [MIT 许可证](LICENSE)。第三方组件见 [许可声明](THIRD_PARTY_NOTICES.md)。
