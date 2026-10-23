@@ -1,47 +1,63 @@
-# DSH Projects v0.1.0-rc.1
+# DSH Projects v0.3.0-rc.1
 
-基于 **Claude Projects** 的项目组织方式，为 **DeepSeek Harness** 实现的第三方本地项目插件。
+基于 **Claude Projects** 的项目组织方式，为 **DeepSeek Harness** 开发的第三方项目插件。
 
-**适配版本：DSH 0.2.1-rc.2 · macOS arm64**
+**适配 DSH 0.2.1-rc.2 · macOS arm64 · MIT · 预发行版**
 
-**MIT 开源 · 预发行版**
+这次更新主要完善项目记忆，加入可选的 `Hindsight` 连接，并改进目录选择和连接状态提示。
 
-> **当前版本不支持 DSH 官方 Agent Team。** 请勿在 Project 主对话（Coordinator）或 Thread 中运行 Agent Team、选择 Team 预设，或让 Coordinator 调度 Team 成员。同一 Profile 共装未经过兼容性测试；需要分别使用时，请使用独立 Profile。[兼容性说明](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/COMPATIBILITY.md#agent-team)
+## 更新内容
+
+### 项目记忆
+
+- 以逻辑 Markdown 文件管理项目概要、需求、约束、决定、问题和经验。
+- 区分当前内容、候选和历史，保留来源与修改记录。
+- 记忆索引增加短说明；每轮按预算选取概要、索引和相关正文。
+- 使用记录分别列出索引预览与全文，方便查看当轮组装了哪些内容。
+- 支持在授权范围内检索工程文本和 Library 资料。
+
+### 可选的历史记忆
+
+- 适配 `Hindsight 1.1.0`，每个项目绑定自己的记忆库。
+- 默认关闭，已有库默认只读；任务报告写回需要单独开启。
+- 修复检查失败后保留旧成功状态，以及旧请求覆盖新结果的问题。
+- 服务不可用时继续使用本地记忆。
+
+### 目录选择
+
+- 等待期间可以取消，其他项目操作不再被阻塞。
+- 增加超时处理，任务变化后忽略迟到的选择结果。
+- 选择目录后仍需单独批准任务执行。
 
 ## 核心能力
 
 **把一次对话，延续成一个可以持续推进的项目。**
 
-- **项目与任务：** 保存项目目标和指令，在主对话中安排工作，通过独立 Thread 执行并继续讨论，在 Overview 查看状态。
-- **Memory：** 保存、编辑和删除项目记忆，保留来源与版本。
-- **Library：** 导入、预览、替换和下载资料，读取 PDF、PNG/JPEG、DOCX、XLSX、PPTX 的受支持内容。
-- **本地工作区：** 授权目录后使用 Direct 或 Git Worktree，沿用 DSH 的模型选择、审批和停止操作。
-- **项目管理：** 暂停、归档、恢复和删除。删除项目会清理插件数据，归档保留 DSH 会话历史；用户原文件、仓库和 Worktree 保留。
+通过项目主对话安排工作，用独立 Thread 执行和续聊；Memory 保存约定，Library 管理资料。本地执行支持 Direct / Git Worktree，沿用 DSH 的模型选择、审批和停止操作。
 
-## 尚未实现
+## 当前限制
 
-真实外部 MCP 接入、自动创建 Thread 的 Routine、插件内 PR/CI 协作、多可写仓库流程和云端 Worker 尚未提供。文档读取不支持 OCR、旧版 Office、宏执行、公式计算或完整排版还原。
+- **不支持在 Project 内使用 DSH 官方 Agent Team。** 同一 Profile 共装尚未测试，建议分别使用独立 Profile。
+- `Hindsight` 目前只完成模拟服务测试，真实记忆库的写入、召回和模型效果尚未测试。
+- 原生目录选择与后续授权的完整成功流程尚未完成测试。
+- 真实外部 MCP、自动派工、插件内 PR/CI、多可写仓库管理和云端 Worker 尚未提供。
+- 真实模型的任务质量和图片理解尚未测试；其他 DSH 构建和操作系统尚未验证。
 
-本插件参考 Claude Projects，但尚未实现其全部功能，也没有官方关联。本地核心流程已通过固定环境测试；实际模型的任务完成质量和图片理解尚未验证。详见 [已知限制](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/KNOWN_LIMITATIONS.md)。
+[兼容性与限制](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/KNOWN_LIMITATIONS.md) · [测试记录](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/RELEASE.md)
 
-## 安装
+## 安装与升级
 
-1. 从下方 **Assets** 下载 `.tgz` 安装包和同名 `.sha256` 文件，放入同一目录。
-2. 在该目录运行校验命令，确认输出 `OK`：
+1. 下载 `.tgz` 安装包和同名 `.sha256` 文件，放在同一目录。
+2. 运行校验：
 
    ```sh
-   shasum -a 256 -c dsh-project-threads-wave1-spike-0.1.0-rc.1.tgz.sha256
+   shasum -a 256 -c dsh-project-threads-wave1-spike-0.3.0-rc.1.tgz.sha256
    ```
 
-3. 在 DSH 的 **插件 → 安装第三方插件** 中输入安装包的完整 `file:` 路径，安装并启用。
-4. 打开 **Projects**，创建项目、选择模型，加入资料后开始工作。
+3. 确认输出 `OK` 后，在 DSH 的插件页面输入安装包的完整 `file:` 路径，安装并启用。
 
-[安装指南](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/INSTALL.md) · [使用指南](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/USAGE.md) · [升级与回退](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/MIGRATION.md)
+**从 v0.1.0-rc.1 升级前请先停止任务并备份。** 新版变更了存储格式，需要手动批准迁移。旧程序不能读取新版存储，回退须恢复旧包和配套备份。[升级步骤](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/MIGRATION.md)
 
-## 版本说明
+[安装指南](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/INSTALL.md) · [使用指南](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/USAGE.md) · [`Hindsight` 连接说明](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/HINDSIGHT.md)
 
-已验证 DSH 构建为 `332895e0f7c9d4dbfb29729f5eb367fa263ff986`。其他 DSH 构建和操作系统尚未验证。安装时仍可能出现 peer 依赖警告，请先阅读兼容性说明。
-
-安装包名保留为 `dsh-project-threads-wave1-spike`，界面名称为 **Projects**。本版本保留 Prerelease 标记，不设为 Latest。
-
-[构建与测试记录](https://github.com/luyuan-debug/dsh-projects/blob/main/docs/RELEASE.md) · [MIT 许可证](https://github.com/luyuan-debug/dsh-projects/blob/main/LICENSE) · [第三方声明](https://github.com/luyuan-debug/dsh-projects/blob/main/THIRD_PARTY_NOTICES.md)
+本插件与 Claude Projects 没有官方关联。采用 [MIT 许可证](https://github.com/luyuan-debug/dsh-projects/blob/main/LICENSE)，第三方组件见 [许可声明](https://github.com/luyuan-debug/dsh-projects/blob/main/THIRD_PARTY_NOTICES.md)。

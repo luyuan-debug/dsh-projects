@@ -1,35 +1,48 @@
-# 发布维护
+# 构建与测试
 
-## 检查流程
+适配环境：macOS arm64、DSH `0.2.1-rc.2`，构建 `332895e0f7c9d4dbfb29729f5eb367fa263ff986`。
 
-1. 使用固定 Node / npm 执行 `npm ci`，检查锁文件无意外变化。
-2. 运行 `npm run build`、`npm run test:portable`，在 macOS arm64 额外运行 `npm run test:mac`。
-3. 保留项目及第三方许可，执行 `npm pack --ignore-scripts`，用 `tools/release/verify-package.py` 核对安装包成员。
-4. 在独立 DSH_HOME / Profile 验证安装、冷启动、项目与 Thread、续聊、升级、停用及卸载。`tools/release/check-host.py` 提供脚本模型测试，不验证真实模型质量。
-5. 用 `tools/release/scan-security.py --history --package <tgz>` 检查源码、历史和安装包。逐项审查匹配，不能直接忽略未分类结果。
-6. 为安装包和发布附件生成 SHA-256 校验和，核对版本、标签、许可及发布说明后发布。
-
-GitHub Actions 负责构建和可移植离线测试，不自动发布。安装、桌面操作、实际文档读取及真实模型行为需要分别验证。安装测试不得使用日常 Profile；真实模型调用需要明确的费用授权。
-
-## 0.1.0-rc.1 的验证范围
+## v0.3.0-rc.1 测试结果
 
 | 检查 | 结果 |
 | --- | --- |
-| macOS 完整离线测试 | 196 通过 |
-| macOS CI | 178 通过，无跳过 |
-| Ubuntu CI | 165 通过，13 项仅适用于 macOS 的测试跳过 |
-| 隔离 DSH 安装 | 全新安装、启停、冷恢复、项目与 Thread 操作、卸载通过 |
-| 从 0.0.0-final01.5 升级 | 项目、Thread、Memory、Library 保留 |
-| 安装包 | 全部成员与对应源码、依赖逐字节核对 |
+| macOS 本地离线测试 | 196 项通过 |
+| 项目记忆测试 | 152 项通过 |
+| 记忆界面测试 | 14 项通过 |
+| 目录选择界面测试 | 15 项通过 |
+| DSH 安装测试 | 安装、重启、停用、重新启用和卸载通过 |
+| 原生桌面测试 | 记忆索引、使用记录、连接状态和错误恢复通过 |
 
-上述安装测试使用脚本模型；不代表真实模型任务质量或图片理解已验证。Agent Team 共装、嵌套与预设冲突不在测试范围内。
+[版本标签 CI](https://github.com/luyuan-debug/dsh-projects/actions/runs/39991900177) 中，macOS 的可移植测试 178 项、记忆测试 152 项、界面测试 14 项通过；Ubuntu 分别为 165、151、14 项通过，另有 14 项仅适用于 macOS 的测试跳过。各套件有重叠，不相加。
 
-## CI 临时目录
+对话测试使用脚本模型，外部连接测试使用模拟 HTTP 服务。真实 `Hindsight` 读写、真实模型效果，以及原生目录选择与授权的完整成功流程尚未完成测试。Agent Team 在 Project 内不支持，同一 Profile 共装未测试。
 
-测试入口优先使用 `DSH_TEST_ROOT`，其次使用 GitHub runner 的 `RUNNER_TEMP`，否则使用系统临时目录。Linux 测试目录应位于 checkout 和 `/tmp` 之外。13 项依赖 macOS 租约机制的测试在 Linux 跳过，其他 Git 安全测试继续执行。
+安装包与源码归档对应 `v0.3.0-rc.1` 标签。文档修订不改变已发布程序。
 
-## 文档修订与已发布文件
+## 本地构建
 
-在线文档和 Release 说明可以补充限制、修正措辞。已发布安装包、源码归档和标签保持对应；文档修订不自动重打安装包。核对旧安装包时以对应标签为准。
+使用 Node `26.8.1` / npm `11.19.0`：
 
-若更新单独下载的发布说明，也要更新包含其摘要的 `SHA256SUMS.txt`。产品变更应生成新版本并重新验证。保留旧标签和测试记录，不重写发布历史。
+```sh
+npm ci
+npm run build
+npm run test:portable
+npm run test:memory
+npm run test:mac
+```
+
+最后一项需要 macOS。测试数据使用临时目录，不连接日常 Profile；真实模型调用需另行配置和授权。
+
+## 发布检查
+
+1. 检查构建产物、锁文件、许可和版本号。
+2. 运行回归测试，并在独立 Profile 测试安装、启停、恢复和卸载。
+3. 生成安装包，用 `tools/release/verify-package.py` 检查内容，用 `tools/release/scan-security.py` 检查源码和附件。
+4. 为附件生成 SHA-256 校验和，等待对应提交的 GitHub CI 通过后发布。
+5. 保留旧版本、标签和安装包。文档附件发生变化时，同步更新校验和。
+
+GitHub Actions 负责构建、可移植测试、项目记忆和记忆界面测试，不自动发布。Linux CI 通过不表示支持 Linux 安装。
+
+## 测试目录
+
+测试优先使用 `DSH_TEST_ROOT`，其次使用 GitHub runner 的 `RUNNER_TEMP`，否则使用系统临时目录。Linux 测试目录须位于 checkout 和 `/tmp` 之外。
