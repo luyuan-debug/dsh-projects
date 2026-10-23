@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "donor": {
+    "repository": "https://github.com/00080000/dsh-project-memory",
+    "package": "@yolk_vat-y/dsh-project-memory",
+    "version": "0.6.3",
+    "commit": "21fc69e3e98f3864677e091477b7d543a0e54939",
+    "license": "MIT"
+  },
+  "selectedFiles": [
+    {
+      "upstreamPath": "src/chunker.js",
+      "upstreamSHA256": "41c2a84c9017967e3053fa2eb1e35718240a2f293bee61fea023b635c5f7f94b",
+      "localPath": "src/product/vendor/dsh-project-memory/chunker.js",
+      "localSHA256": "41c2a84c9017967e3053fa2eb1e35718240a2f293bee61fea023b635c5f7f94b",
+      "modifications": []
+    },
+    {
+      "upstreamPath": "src/symbols.js",
+      "upstreamSHA256": "ff9c1f97f63a6dc4ca5600e55f5268f7637f4a23c638c8cb85d9deab3eb3947b",
+      "localPath": "src/product/vendor/dsh-project-memory/symbols.js",
+      "localSHA256": "d88e6950612ef33f27f3009726462529d987e2a10ad832e087815b79a2e2f776",
+      "modifications": [
+        "Remove unused synchronous filesystem import; symbols operate only on adapter supplied text."
+      ]
+    },
+    {
+      "upstreamPath": "src/doc-index.js",
+      "upstreamSHA256": "1d7494c8a6ff3d42508e7d7bb6956d24d375b0dfac837b749db73843c00c24bc",
+      "localPath": "src/product/vendor/dsh-project-memory/doc-index.js",
+      "localSHA256": "1d7494c8a6ff3d42508e7d7bb6956d24d375b0dfac837b749db73843c00c24bc",
+      "modifications": []
+    },
+    {
+      "upstreamPath": "src/util/search.js",
+      "upstreamSHA256": "4e0d76d5beb5c3ca62ae5ef5d2dbe10d17b68de7086608354c3b144c0d122e8f",
+      "localPath": "src/product/vendor/dsh-project-memory/util/search.js",
+      "localSHA256": "c863517454b2b1b7e2d7ed646063ca26862987fbc139d16f570657517d5b91bd",
+      "modifications": [
+        "Use null-prototype frequency maps so identifiers constructor and __proto__ remain searchable; BM25 algorithm unchanged."
+      ]
+    },
+    {
+      "upstreamPath": "src/util/text.js",
+      "upstreamSHA256": "f5dac9927057f2d6ed9baa95eba64fae69bb93bf3c3b4a15819191170f61ceda",
+      "localPath": "src/product/vendor/dsh-project-memory/util/text.js",
+      "localSHA256": "f5dac9927057f2d6ed9baa95eba64fae69bb93bf3c3b4a15819191170f61ceda",
+      "modifications": []
+    },
+    {
+      "upstreamPath": "src/util/entry-id.js",
+      "upstreamSHA256": "edb78e4e067cf48b4de838e257e004f6aa72c4b8c5440df31b56c48d456a1504",
+      "localPath": "src/product/vendor/dsh-project-memory/util/entry-id.js",
+      "localSHA256": "edb78e4e067cf48b4de838e257e004f6aa72c4b8c5440df31b56c48d456a1504",
+      "modifications": []
+    },
+    {
+      "upstreamPath": "LICENSE",
+      "upstreamSHA256": "16efe3fc6cf1b870ac4a374c6672ec78325cf41c21292fbf82946ff7cd83c74d",
+      "localPath": "third_party/licenses/dsh-project-memory-MIT.txt",
+      "localSHA256": "16efe3fc6cf1b870ac4a374c6672ec78325cf41c21292fbf82946ff7cd83c74d",
+      "modifications": []
+    },
+    {
+      "upstreamPath": "test/chunker.test.mjs",
+      "upstreamSHA256": "cb1a446c1ab27fd3955ae610b7c7a1227ce14562d96da0c7367e568ac7ebca07",
+      "localPath": "tests/mem03/donor-chunker-upstream.test.mjs",
+      "localSHA256": "7903f88bf54f28f61e3620c414a19ccac147d933b1e002d89290e4cd95db965e",
+      "modifications": [
+        "Repoint only the chunkText import to vendored module; preserve original differential tests."
+      ]
+    }
+  ],
+  "dependencyClosure": {
+    "runtimeExternalPackages": [],
+    "nodeBuiltins": [],
+    "adapterNodeBuiltins": [
+      "node:path",
+      "node:crypto",
+      "node:fs",
+      "node:fs/promises",
+      "node:timers/promises"
+    ]
+  },
+  "explicitlyExcluded": [
+    "src/index.js apply entrypoint",
+    "TaskBridge and task UI/tools",
+    "donor stores/root resolver/watchers",
+    "global memory and global insight",
+    "autoContext and auto-inject",
+    "LLM route, reflection and query expansion",
+    "leanvec and all vector index/fusion/dedup modules",
+    "donor PDF parser and pdfjs-dist"
+  ],
+  "actualCallChain": [
+    "Projects runtime trusted membership / binding -> ProjectEvidenceIndex.query",
+    "authorized read / supplied formal records / existing LibraryReader result -> chunkText + scanSymbols + entryIdPrefix",
+    "extractKeywords / extractTermText -> donor tokenizeRaw",
+    "full-body chunk text -> donor buildBm25 -> donor tokenizeRaw -> score",
+    "Projects state/permission/version validation -> selected source hash recheck -> bounded query output"
+  ]
+}
